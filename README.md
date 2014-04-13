@@ -24,13 +24,13 @@ Style: [Bootstrap](http://getbootstrap.com/), [LESS](http://lesscss.org/), [Font
 
 ##Development:
 
-    1. Install virtualenv, npm, bower
-    2. Under the root directory, Install a virtual environment using install.sh (or install.bat for Windows):
+####1. Install virtualenv, npm, bower
+####2. Under the root directory, Install a virtual environment using install.sh (or install.bat for Windows):
     $ ./install.sh
-    3. Activate the corresponding environment. do the following:
+####3. Activate the corresponding environment. do the following:
     $ source flask/bin/activate
-    4. Now, when you check you python path, it should be like this:
+####4. Now, when you check you python path, it should be like this:
     $ which python
     /Users/hanyan/Desktop/Homework/CS598/FoodAdvisor/flask/bin/python
-    5. Run the service(under the root directory):
+####5. Run the service(under the root directory):
     $ python run.py

@@ -4,9 +4,9 @@ FoodAdvisor is a simple food image search app that helps people to find where
 to eat with the given food image. It is also a Final Project for CS598 Visual
 Information Retrieval in Stevens Institute of Technology.
 
-##Technology Stacks:
+##Technology Stacks
 
-###Back-end:
+###Back-end
 
 API Server: [Flask](http://flask.pocoo.org/)
 
@@ -16,13 +16,13 @@ Image Search: [OpenCV-Python](http://docs.opencv.org/trunk/doc/py_tutorials/py_s
 
 Data source: [Yelp](http://www.yelp.com)(food images), [Yelp API](http://api.yelp.com)(business info)
 
-###Front-end:
+###Front-end
 
 App: [AngularJS](http://angularjs.org/), [Lo-Dash](http://lodash.com/), [Grunt](http://gruntjs.com/)
 
 Style: [Bootstrap](http://getbootstrap.com/), [LESS](http://lesscss.org/), [FontAwesome](http://fortawesome.github.io/Font-Awesome/)
 
-##Development:
+##Development
 
 ####1. Install virtualenv, npm, bower
 ####2. Under the root directory, Install a virtual environment using install.sh (or install.bat for Windows):

@@ -8,9 +8,9 @@ Information Retrieval in Stevens Institute of Technology.
 
 ###Back-end
 
-API Server: [Flask](http://flask.pocoo.org/)
+API Server: [Flask 0.10.1](http://flask.pocoo.org/)
 
-Persistence: [MongoDB](https://www.mongodb.org/)
+Persistence: [MongoDB 2.6](https://www.mongodb.org/)
 
 Image Search: [OpenCV-Python](http://docs.opencv.org/trunk/doc/py_tutorials/py_setup/py_table_of_contents_setup/py_table_of_contents_setup.html#py-table-of-content-setup), [Scipy Library](http://www.scipy.org/scipylib/index.html), [Numpy](http://www.numpy.org)
 

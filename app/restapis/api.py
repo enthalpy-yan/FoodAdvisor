@@ -9,4 +9,4 @@ def test():
     return Response(
         json_util.dumps(myname),
         mimetype='application/json'
-    )
+    mage)

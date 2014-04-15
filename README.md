@@ -34,3 +34,15 @@ Style: [Bootstrap](http://getbootstrap.com/), [LESS](http://lesscss.org/), [Font
     /Users/hanyan/Desktop/Homework/CS598/FoodAdvisor/flask/bin/python
 ####5. Run the service(under the root directory):
     $ python run.py
+
+
+##Folder Structure
+    FoodAdvisor/
+        ├── app
+        │   ├── helpers           (All self-created functions)
+        │   ├── imagesearchapis   (Implements image search apis)
+        │   ├── restapis          (Implements RESTful apis )
+        │   ├── routes            (App routes)
+        │   └── static            (Front-end Angular App)
+        ├── flask                 (Flask virtual environment)
+        ├── node_modules          (Node dependencies)

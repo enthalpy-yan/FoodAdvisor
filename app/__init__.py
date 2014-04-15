@@ -1,4 +1,3 @@
-from app import app
 from flask import current_app
 from flask import Flask
 from flask.ext.pymongo import PyMongo

@@ -1,6 +1,6 @@
 python virtualenv.py flask
 flask/bin/pip install setuptools --no-use-wheel --upgrade
-flask/bin/pip install flask==1.0
+flask/bin/pip install flask
 flask/bin/pip install flask-login
 flask/bin/pip install flask-openid
 flask/bin/pip install flask-mail==0.7.6

@@ -39,7 +39,8 @@ Style: [Bootstrap](http://getbootstrap.com/), [LESS](http://lesscss.org/), [Font
 ##Folder Structure
     FoodAdvisor/
         ├── app
-        │   ├── helpers           (All self-created functions)
+        │   ├── apphelpers        (Self-created global use functions)
+        │   ├── dbhelpers         (Self-created db-related functions)
         │   ├── imagesearchapis   (Implements image search apis)
         │   ├── restapis          (Implements RESTful apis )
         │   ├── routes            (App routes)

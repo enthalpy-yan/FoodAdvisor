@@ -17,6 +17,26 @@ mongo = PyMongo(app, config_prefix='MONGO')
 ctx = app.app_context()
 ctx.push()
 current_app.mycreate = "ajlknl123j1l2k3jn123jnansfkajwe"
+# current_app.business = {
+#     'image_id': 101
+#     'description': "",
+#     'relpath': "images/dir/ .jpg",
+#     'business_id': ,
+#     'business_info': {
+#         'name': (from Yelp API),
+#         'rating': (from Yelp API),
+#         'phone_number': (from Yelp API),
+#         'review_count': (from Yelp API),
+#         'location': {
+#             'displayname': (from Yelp API),
+#             'details':{
+#                 'longitude': (Google Geo code API),
+#                 'latitude': (Google Geo code API),
+#             }
+#         }
+#         'category': (from Yelp API)
+#     }
+# }
 
 from app.routes import index
 from app.restapis import api

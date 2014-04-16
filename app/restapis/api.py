@@ -4,7 +4,7 @@ from app import mongo
 from flask import Response, request, current_app
 from bson import json_util
 from werkzeug import secure_filename
-from app.apphelpers import helpers
+from app.apphelpers import upload
 
 @app.route('/test')
 def test():
@@ -15,12 +15,12 @@ def test():
     )
 
 # Route that will process the file upload
-@app.route('/upload', methods=['POST'])
-def upload():
+@app.route('/foodimages/search', methods=['POST'])
+def search():
     # Get the name of the uploaded file
     file = request.files['imgfile']
     
-    if file and helpers.allowed_file(file.filename):
+    if file and upload.allowed_file(file.filename):
         # Make the filename safe, remove unsupported chars
         filename = secure_filename(file.filename)
 
@@ -30,3 +30,12 @@ def upload():
             json_util.dumps(app.config['UPLOAD_FOLDER'] + filename),
             mimetype='application/json'
         )
+
+@app.route('/test1', methods=['GET'])
+def test1():
+    data = current_app.magic
+
+    return Response(
+        json_util.dumps(data['test1']),
+        mimetype='application/json'
+    )

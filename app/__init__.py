@@ -19,82 +19,123 @@ ctx.push()
 current_app.mycreate = "ajlknl123j1l2k3jn123jnansfkajwe"
 
 # Fake DB data
-current_app.business = 
-{
+current_app.business =
+[
     {
-        'image_id': 101
-        'description': "one hundred and one",
-        'relpath': "static/images/101.jpg",
-        'business_id': "chinese-food-hoboken",
-        'business_info': {
-            'name': "yeung two",
-            'rating': 4.0,
-            'phone_number': "＋1-201－420－7197",
-            'review_count': 298,
-            'location': {
-                'display_name': "Yeung 2",
-                'details':{
-                    'longitude': 40.750792,
-                    'latitude': -74.027127,
+        "business_info": {
+            "category": [
+                [
+                    "Indian",
+                    "indpak"
+                ],
+                [
+                    "Mexican",
+                    "mexican"
+                ],
+                [
+                    "American (New)",
+                    "newamerican"
+                ]
+            ],
+            "rating": 4.0,
+            "review_count": 178,
+            "name": "23rd Street Cafe",
+            "phone": "+1-213-749-1593",
+            "location": {
+                "display_name": [
+                    "936 W 23rd St",
+                    "University Park",
+                    "Los Angeles, CA 90007"
+                ],
+                "details": {
+                    "latitude": 34.033785,
+                    "longitude": -118.2808464
                 }
             }
-            'category': [
-                "Chinese food",
-                "Sushi",
-                "Japanese staples"
-            ]
-        }
+        },
+        "description": "Amazing chicken tikka and aloo tacos",
+        "abspath": "/Users/hanyan/Desktop/Homework/CS598/FoodAdvisor/app/static/images/foods/23rd-street-cafe-los-angeles/Amazing chicken tikka and aloo tacos.jpg",
+        "business_id": "23rd-street-cafe-los-angeles",
+        "image-id": 0,
+        "relpath": "images/foods/23rd-street-cafe-los-angeles/Amazing chicken tikka and aloo tacos.jpg"
     },
     {
-        'image_id': 340
-        'description': "three hundred and fourty",
-        'relpath': "static/images/340.jpg",
-        'business_id': "Ramen-new-york",
-        'business_info': {
-            'name': "Ramen store",
-            'rating': 4.5,
-            'phone_number': "＋1-631－420－7197",
-            'review_count': 4362,
-            'location': {
-                'display_name': "Ramen store",
-                'details':{
-                    'longitude': 40.7466955,
-                    'latitude': -74.0045213,
+        "business_info": {
+            "category": [
+                [
+                    "Indian",
+                    "indpak"
+                ],
+                [
+                    "Mexican",
+                    "mexican"
+                ],
+                [
+                    "American (New)",
+                    "newamerican"
+                ]
+            ],
+            "rating": 4.0,
+            "review_count": 178,
+            "name": "23rd Street Cafe",
+            "phone": "+1-213-749-1593",
+            "location": {
+                "display_name": [
+                    "936 W 23rd St",
+                    "University Park",
+                    "Los Angeles, CA 90007"
+                ],
+                "details": {
+                    "latitude": 34.033785,
+                    "longitude": -118.2808464
                 }
             }
-            'category': [
-                "local food",
-                "Ramen",
-                "Japanese staples"
-            ]
-        }
+        },
+        "description": "Asada and Eggs with Hash Browns",
+        "abspath": "/Users/hanyan/Desktop/Homework/CS598/FoodAdvisor/app/static/images/foods/23rd-street-cafe-los-angeles/Asada and Eggs with Hash Browns.jpg",
+        "business_id": "23rd-street-cafe-los-angeles",
+        "image-id": 1,
+        "relpath": "images/foods/23rd-street-cafe-los-angeles/Asada and Eggs with Hash Browns.jpg"
     },
     {
-        'image_id': 9001
-        'description': "nine thousands and one",
-        'relpath': "static/images/9001.jpg",
-        'business_id': "italy-new-york",
-        'business_info': {
-            'name': "italian food",
-            'rating': 3.5,
-            'phone_number': "＋1-631－254－4525",
-            'review_count': 157,
-            'location': {
-                'display_name': "Italian",
-                'details':{
-                    'longitude': 40.7384217,
-                    'latitude': -74.0014305,
+        "business_info": {
+            "category": [
+                [
+                    "Indian",
+                    "indpak"
+                ],
+                [
+                    "Mexican",
+                    "mexican"
+                ],
+                [
+                    "American (New)",
+                    "newamerican"
+                ]
+            ],
+            "rating": 4.0,
+            "review_count": 178,
+            "name": "23rd Street Cafe",
+            "phone": "+1-213-749-1593",
+            "location": {
+                "display_name": [
+                    "936 W 23rd St",
+                    "University Park",
+                    "Los Angeles, CA 90007"
+                ],
+                "details": {
+                    "latitude": 34.033785,
+                    "longitude": -118.2808464
                 }
             }
-            'category': [
-                "italian food",
-                "europe",
-                "Pizza",
-                "pub"
-            ]
-        }
-    }    
-}
+        },
+        "description": "Breakfast Burrito with Sausage",
+        "abspath": "/Users/hanyan/Desktop/Homework/CS598/FoodAdvisor/app/static/images/foods/23rd-street-cafe-los-angeles/Breakfast Burrito with Sausage.jpg",
+        "business_id": "23rd-street-cafe-los-angeles",
+        "image-id": 2,
+        "relpath": "images/foods/23rd-street-cafe-los-angeles/Breakfast Burrito with Sausage.jpg"
+    }
+]
 from app.routes import index
 from app.restapis import api
 

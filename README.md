@@ -57,6 +57,11 @@ Style: [Bootstrap](http://getbootstrap.com/), [LESS](http://lesscss.org/), [Font
 
 ###DB document sample
     {
+        "description": "Amazing chicken tikka and aloo tacos",
+        "abspath": "/Users/hanyan/Desktop/Homework/CS598/FoodAdvisor/app/static/images/foods/23rd-street-cafe-los-angeles/Amazing chicken tikka and aloo tacos.jpg",
+        "business_id": "23rd-street-cafe-los-angeles",
+        "image-id": 0,
+        "relpath": "images/foods/23rd-street-cafe-los-angeles/Amazing chicken tikka and aloo tacos.jpg",
         "business_info": {
             "category": [
                 [
@@ -87,10 +92,5 @@ Style: [Bootstrap](http://getbootstrap.com/), [LESS](http://lesscss.org/), [Font
                     "longitude": -118.2808464
                 }
             }
-        },
-        "description": "Amazing chicken tikka and aloo tacos",
-        "abspath": "/Users/hanyan/Desktop/Homework/CS598/FoodAdvisor/app/static/images/foods/23rd-street-cafe-los-angeles/Amazing chicken tikka and aloo tacos.jpg",
-        "business_id": "23rd-street-cafe-los-angeles",
-        "image-id": 0,
-        "relpath": "images/foods/23rd-street-cafe-los-angeles/Amazing chicken tikka and aloo tacos.jpg"
+        }
     }

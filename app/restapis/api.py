@@ -30,12 +30,3 @@ def search():
             json_util.dumps(app.config['UPLOAD_FOLDER'] + filename),
             mimetype='application/json'
         )
-
-@app.route('/test1', methods=['GET'])
-def test1():
-    data = current_app.magic
-
-    return Response(
-        json_util.dumps(data['test1']),
-        mimetype='application/json'
-    )

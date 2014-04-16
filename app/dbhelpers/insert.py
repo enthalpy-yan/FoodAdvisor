@@ -4,7 +4,7 @@ Module for insert image data into local MongoDB.
 import json
 from pymongo import MongoClient
 
-def insertImages(json_file, db_name, collection_name):
+def insert_images(json_file, db_name, collection_name):
     """
     Populate data from json files.
 

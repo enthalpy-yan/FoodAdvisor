@@ -10,3 +10,5 @@ flask/bin/pip install flask-wtf==0.8.4
 flask/bin/pip install pytz==2013b
 flask/bin/pip install flask-babel==0.8
 flask/bin/pip install flup
+flask/bin/pip install geopy
+flask/bin/pip install oauth2

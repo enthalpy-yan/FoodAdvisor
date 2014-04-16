@@ -56,7 +56,7 @@ Style: [Bootstrap](http://getbootstrap.com/), [LESS](http://lesscss.org/), [Font
     `$ python run.py`
 
 ###DB document sample
-        {
+    {
         "business_info": {
             "category": [
                 [

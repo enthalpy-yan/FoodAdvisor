@@ -8,9 +8,52 @@ all food images extracted from yelp.com.
 import os
 import re
 import glob
+import yelpapi
+from geopy import geocoders
 from itertools import imap
 
 IMAGES_SOURCE = '../static/images/foods'
+
+def _listdir_nohidden(path):
+    return glob.glob(os.path.join(path, '*'))
+
+def _get_geoinfo(address):
+    """
+    Get latitude and longitude informations from the given address.
+    """
+    g = geocoders.GoogleV3()
+    place, (lat, lng) = g.geocode(address)
+    return lat, lng
+
+def businesses_info(directory):
+    """
+    Find all detail business informations.
+
+    Parameters
+    ----------
+    directory: folders that contains all businesses' food image. Each
+               folder's name is a unique yelp business id.
+
+    Returns
+    -------
+    A business informations dictionary.
+    """
+    business_info_dict = {}
+    for subdir in _listdir_nohidden(directory):
+        id = os.path.basename(subdir)
+        yelp_info = yelpapi.find_business_by_id(id)
+        business_info = {'name': yelp_info['name'],
+                         'rating': yelp_info['rating'],
+                         'phone': yelp_info['phone'],
+                         'review_count': yelp_info['review_count'],
+                         'category': yelp_info['categories']}
+        location = {'display_name':
+                        yelp_info['location']['display_address']}
+        lat, lng = _get_geoinfo(", ".join(location['display_name']))
+        location['details'] = {'latitude': lat, 'longitude': lng}
+        business_info['location'] = location
+        business_info_dict[id] = business_info
+    return business_info_dict
 
 def images_iter(directory):
     """
@@ -28,8 +71,6 @@ def images_iter(directory):
            'description': 'description of the image',
            'businessid': 'yelp business id'})
     """
-    def _listdir_nohidden(path):
-        return glob.glob(os.path.join(path, '*'))
 
     def _imagefiles():
         "Get all of image files from given directory."

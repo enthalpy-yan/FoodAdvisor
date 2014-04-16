@@ -46,7 +46,7 @@ Style: [Bootstrap](http://getbootstrap.com/), [LESS](http://lesscss.org/), [Font
   3. Activate the corresponding environment. do the following
     
     `$ source flask/bin/activate`
-  4. Now, when you check you python path, it should be like this
+  4. Now, when you check your python path, it should be like this
         
     ```
     $ which python

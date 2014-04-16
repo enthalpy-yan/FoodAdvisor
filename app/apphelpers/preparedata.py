@@ -1,9 +1,10 @@
 #!/usr/bin/env python
-from imageinfo import images_info
 
 """
 Script for prepare data for FoodAdvisor
 """
+
+from imageinfo import images_info
 
 IMAGES_SOURCE = '../static/images/foods'
 BUSINESSES_DATA_DES = '../outputs/business_data.txt'

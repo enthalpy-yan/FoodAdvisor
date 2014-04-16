@@ -12,3 +12,4 @@ flask/bin/pip install flask-babel==0.8
 flask/bin/pip install flup
 flask/bin/pip install geopy
 flask/bin/pip install oauth2
+flask/bin/pip install pymongo

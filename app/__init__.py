@@ -19,7 +19,7 @@ ctx.push()
 current_app.mycreate = "ajlknl123j1l2k3jn123jnansfkajwe"
 
 # Fake DB data
-current_app.business =
+current_app.images =
 [
     {
         "business_info": {

@@ -50,7 +50,8 @@ Style: [Bootstrap](http://getbootstrap.com/), [LESS](http://lesscss.org/), [Font
         
     ```
     $ which python
-    /Users/hanyan/Desktop/Homework/CS598/FoodAdvisor/flask/bin/python```
+    /Users/hanyan/Desktop/Homework/CS598/FoodAdvisor/flask/bin/python
+    ```
   5. Run the service(under the root directory)
     `$ python run.py`
 

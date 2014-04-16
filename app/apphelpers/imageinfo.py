@@ -12,8 +12,6 @@ import json
 from geopy import geocoders
 from itertools import imap
 
-IMAGES_SOURCE = '../static/images/foods'
-
 def _listdir_nohidden(path):
     return glob.glob(os.path.join(path, '*'))
 
@@ -25,7 +23,7 @@ def _get_geoinfo(address):
     place, (lat, lng) = g.geocode(address, timeout=5)
     return lat, lng
 
-def businesses_info(directory):
+def _businesses_info(directory):
     """
     Find all detail business informations.
 
@@ -55,7 +53,7 @@ def businesses_info(directory):
         business_info_dict[id] = business_info
     return business_info_dict
 
-def images_iter(directory):
+def _images_iter(directory):
     """
     Get a iterator that contains instances of jpg file info dict.
 
@@ -100,19 +98,19 @@ def images_iter(directory):
     return (_jpg_file_info(_parse_attribute(f))
                 for f in _imagefiles(directory))
 
-def images_info(directory):
+def images_info(directory, businesses_data_des, images_data_des):
     """
     Retrieve all images information and also its business information.
     """
-    business_info_dict = businesses_info(directory)
-    with open('business_data.txt', 'w') as outfile:
+    business_info_dict = _businesses_info(directory)
+    with open(businesses_data_des, 'w') as outfile:
         json.dump(business_info_dict, outfile)
     images_list = []
     index = 0
-    for img in images_iter(directory):
+    for img in _images_iter(directory):
         img['business_info'] = business_info_dict[img['business_id']]
-        img['image-id'] = index
+        img['image_id'] = index
         index += 1
         images_list.append(img)
-    with open('images_data.txt', 'w') as outfile:
+    with open(images_data_des, 'w') as outfile:
         json.dump(images_list, outfile)

@@ -24,19 +24,7 @@ Style: [Bootstrap](http://getbootstrap.com/), [LESS](http://lesscss.org/), [Font
 
 ##Development
 
-####1. Install virtualenv, npm, bower
-####2. Under the root directory, Install a virtual environment using install.sh (or install.bat for Windows):
-    $ ./install.sh
-####3. Activate the corresponding environment. do the following:
-    $ source flask/bin/activate
-####4. Now, when you check you python path, it should be like this:
-    $ which python
-    /Users/hanyan/Desktop/Homework/CS598/FoodAdvisor/flask/bin/python
-####5. Run the service(under the root directory):
-    $ python run.py
-
-
-##Folder Structure
+###Folder Structure
     FoodAdvisor/
         ├── app
         │   ├── apphelpers        (Self-created global use functions)
@@ -48,3 +36,60 @@ Style: [Bootstrap](http://getbootstrap.com/), [LESS](http://lesscss.org/), [Font
         │   └── outputs           (folder for saving output files)
         ├── flask                 (Flask virtual environment)
         ├── node_modules          (Node dependencies)
+
+###Configuration
+  1. Install virtualenv, npm, bower
+
+  2. Under the root directory, Install a virtual environment using install.sh (or install.bat for Windows)
+     
+    `$ ./install.sh`
+  3. Activate the corresponding environment. do the following
+    
+    `$ source flask/bin/activate`
+  4. Now, when you check you python path, it should be like this
+        
+    ```
+    $ which python
+    /Users/hanyan/Desktop/Homework/CS598/FoodAdvisor/flask/bin/python```
+  5. Run the service(under the root directory)
+    `$ python run.py`
+
+###DB document sample
+        {
+        "business_info": {
+            "category": [
+                [
+                    "Indian",
+                    "indpak"
+                ],
+                [
+                    "Mexican",
+                    "mexican"
+                ],
+                [
+                    "American (New)",
+                    "newamerican"
+                ]
+            ],
+            "rating": 4.0,
+            "review_count": 178,
+            "name": "23rd Street Cafe",
+            "phone": "+1-213-749-1593",
+            "location": {
+                "display_name": [
+                    "936 W 23rd St",
+                    "University Park",
+                    "Los Angeles, CA 90007"
+                ],
+                "details": {
+                    "latitude": 34.033785,
+                    "longitude": -118.2808464
+                }
+            }
+        },
+        "description": "Amazing chicken tikka and aloo tacos",
+        "abspath": "/Users/hanyan/Desktop/Homework/CS598/FoodAdvisor/app/static/images/foods/23rd-street-cafe-los-angeles/Amazing chicken tikka and aloo tacos.jpg",
+        "business_id": "23rd-street-cafe-los-angeles",
+        "image-id": 0,
+        "relpath": "images/foods/23rd-street-cafe-los-angeles/Amazing chicken tikka and aloo tacos.jpg"
+    }

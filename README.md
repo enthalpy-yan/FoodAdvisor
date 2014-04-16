@@ -45,5 +45,6 @@ Style: [Bootstrap](http://getbootstrap.com/), [LESS](http://lesscss.org/), [Font
         │   ├── restapis          (Implements RESTful apis )
         │   ├── routes            (App routes)
         │   └── static            (Front-end Angular App)
+        │   └── outputs           (folder for saving output files)
         ├── flask                 (Flask virtual environment)
         ├── node_modules          (Node dependencies)

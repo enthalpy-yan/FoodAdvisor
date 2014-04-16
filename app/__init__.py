@@ -5,6 +5,10 @@ from flask.ext.pymongo import PyMongo
 app = Flask(__name__, static_url_path='')
 app.config.from_object('config')
 
+# upload image configuration
+app.config['UPLOAD_FOLDER'] = 'app/outputs/imgqueries/'
+app.config['ALLOWED_EXTENSIONS'] = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
+
 #DB name configuration.
 app.config['MONGO_DBNAME'] = 'test'
 mongo = PyMongo(app, config_prefix='MONGO')

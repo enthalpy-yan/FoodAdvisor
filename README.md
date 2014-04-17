@@ -38,6 +38,8 @@ Style: [Bootstrap](http://getbootstrap.com/), [LESS](http://lesscss.org/), [Font
         ├── node_modules          (Node dependencies)
 
 ###Configuration
+####Environment
+
   1. Install virtualenv, npm, bower
 
   2. Under the root directory, Install a virtual environment using install.sh (or install.bat for Windows)
@@ -52,8 +54,17 @@ Style: [Bootstrap](http://getbootstrap.com/), [LESS](http://lesscss.org/), [Font
     $ which python
     /Users/hanyan/Desktop/Homework/CS598/FoodAdvisor/flask/bin/python
     ```
-  5. Run the service(under the root directory)
+  5. Run the service(under the root directory), the server should be running without any issues.
     `$ python run.py`
+
+####Data
+
+  Run preparedata.py script under app/dbhelpers/ to insert data into database(Make sure your local mongodb server is openning).
+          
+    ```
+    $ cd app/dbhelpers
+    $ python preparedata.py
+    ```
 
 ###RESTful Service
 ####Text autocomplete

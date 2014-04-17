@@ -15,7 +15,7 @@ def test():
         mimetype='application/json'
     )
 
-@app.route('/foodtexts/search', methods=['GET'])
+@app.route('/api/foodtexts/search', methods=['GET'])
 def suggestion():
     """
     Get word suggestion with the given term.
@@ -28,7 +28,7 @@ def suggestion():
     )
 
 # Route that will process the file upload
-@app.route('/foodimages/search', methods=['POST'])
+@app.route('/api/foodimages/search', methods=['POST'])
 def search():
     # Get the name of the uploaded file
     file = request.files['imgfile']

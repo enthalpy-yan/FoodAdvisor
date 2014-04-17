@@ -60,7 +60,6 @@ Style: [Bootstrap](http://getbootstrap.com/), [LESS](http://lesscss.org/), [Font
 ####Data
 
   Run preparedata.py script under app/dbhelpers/ to insert data into database(Make sure your local mongodb server is openning).
-          
     ```
     $ cd app/dbhelpers
     $ python preparedata.py

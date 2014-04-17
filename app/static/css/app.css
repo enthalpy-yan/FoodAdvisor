@@ -1,8 +1,42 @@
+body {
+  background-color: #f0f0f0;
+  font-family: 'Source Sans Pro', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+body [ng\:cloak],
+body [ng-cloak],
+body [data-ng-cloak],
+body [x-ng-cloak],
+body .ng-cloak,
+body .x-ng-cloak {
+  display: none !important;
+}
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+  outline-color: transparent;
+  outline-style: none;
+}
+input[type=text]:focus {
+  /*border glow*/
+  /*    -moz-box-shadow: inset 0 0 3px 3px rgba(39, 174, 96, .15);
+    -webkit-box-shadow: inset 0 0 3px 3px rgba(39, 174, 96, .15);
+    box-shadow: inset 0 0 3px 3px rgba(39, 174, 96, .15);*/
+}
 .my-navbar {
   border-top: 10px solid #27ae60;
   padding: 15px 0 8px 0px;
   -webkit-box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.05);
+  -webkit-font-smoothing: subpixel-antialiased;
   box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.05);
+}
+.my-navbar .brand {
+  font-size: 30px;
+}
+.my-navbar .links {
+  font-size: 20px;
 }
 .my-navbar .link-top-border {
   border-top: 3px solid #fff;
@@ -18,4 +52,17 @@
   margin-top: 11px;
   margin-left: 10px;
   padding-top: 5px;
+}
+.search-bar-container {
+  padding-top: 24px;
+  padding-bottom: 8px;
+  height: 100px;
+}
+.search-bar-container .search-bar {
+  background-color: #f8f8f8;
+  height: 50px;
+}
+.search-bar-container .search-bar .my-input-bar {
+  height: 50px;
+  background-color: #f8f8f8;
 }

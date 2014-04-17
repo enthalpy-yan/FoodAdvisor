@@ -10,7 +10,8 @@ angular.module('foodAdvisor', [
   'ngResource',
   'ngRoute',
   'ui.bootstrap',
-  'ui.date'
+  'ui.date',
+  'angucomplete'
 ]).
 config(function ($routeProvider, $locationProvider) {
   $routeProvider.

@@ -38,14 +38,16 @@ module.exports = function (grunt) {
       },
       src: {
         files: [
-          '<%= yeoman.app %>/less/*',
           '<%= yeoman.app %>/*.html',
           '<%= yeoman.app %>/css/**/*',
           '<%= yeoman.app %>/js/**/*',
           '<%= yeoman.app %>/views/**/*'
         ],
-        tasks: ['less']
         //tasks: ['sync:dist']
+      },
+      less: {
+        files:'<%= yeoman.app %>/less/*',
+        tasks: ['less']
       }
     },
     connect: {

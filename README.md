@@ -55,6 +55,31 @@ Style: [Bootstrap](http://getbootstrap.com/), [LESS](http://lesscss.org/), [Font
   5. Run the service(under the root directory)
     `$ python run.py`
 
+###RESTful Service
+####Text autocomplete
+Resource                   |      Method
+:------------------------- |-----------:|
+/api/foodtext/search &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| GET
+
+Parameter                  |Description
+:------------------------- |-----------:|
+term &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| keyword strings or prefixes
+
+####food image/text search
+Resource                   |      Method
+:------------------------- |-----------:|
+/api/foodimages/search &nbsp;    | GET/POST
+Resource:
+
+Parameter                  |Description
+:------------------------- |-----------:|
+longitude(optional) | client longitude information
+latitude(optional) | client latitude information
+offset(optional) | Offset the list of returned image results by this amount
+query(optional) | filter result by location
+sortbylocation(optional) | filter result by rating
+sortbyname(optional) | filter result by alphabetic
+
 ###DB document sample
     {
         "description": "Amazing chicken tikka and aloo tacos",

@@ -9,9 +9,6 @@ from app.dbhelpers import findhelper
 
 @app.route('/test')
 def test():
-    # pipeline = [{'$match': {'$text': {'$search': 'clam'}}},
-    #             {'$limit': 50}]
-    # images = findhelper.find_image_by_aggregation(mongo.db, pipeline)
     images = findhelper.find_image_by_id(mongo.db, [1, 20, 30])
     return Response(
         json_util.dumps(images),

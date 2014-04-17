@@ -9,7 +9,7 @@ def find_all_images(db, mylimit=20):
     return db.images.find().limit(mylimit)
 
 def find_image_by_aggregation(db, pipeline):
-    return db.images.aggregate(pipeline)
+    return db.images.aggregate(pipeline)['result']
 
 def find_image_by_id(db, image_ids):
     pipeline = [{'$match': {'image_id': {'$in': image_ids}}},

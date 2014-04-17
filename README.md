@@ -99,8 +99,9 @@ Parameter                  |Description
 longitude(optional) | client longitude information
 latitude(optional) | client latitude information
 offset(optional) | Offset the list of returned image results by this amount
-query(optional) | filter result by location
-sortbylocation(optional) | filter result by rating
+query(optional) | text query
+sortbylocation(optional) | filter result by location
+sortbyrating(optional) | filter result by rating
 sortbyname(optional) | filter result by alphabetic
 
 ###DB document sample

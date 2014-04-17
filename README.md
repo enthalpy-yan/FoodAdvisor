@@ -87,10 +87,13 @@ Style: [Bootstrap](http://getbootstrap.com/), [LESS](http://lesscss.org/), [Font
                     "University Park",
                     "Los Angeles, CA 90007"
                 ],
-                "details": {
-                    "latitude": 34.033785,
-                    "longitude": -118.2808464
-                }
+    			"details" : {
+    				"type" : "Point",
+    				"coordinates" : [
+    					-118.2808464,
+    					34.033785
+    				]
+    			}
             }
         }
     }

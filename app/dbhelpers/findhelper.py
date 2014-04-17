@@ -52,8 +52,15 @@ def text_suggestion(db, term):
                                           '$options': 'i'}}},
                      {'$sort': {'rating': -1}},
                      {'$limit': 15}]
+    pipeline_category = [{'$project': {'category': '$business_info.category'}},
+                         {'$unwind': '$category'},
+                         {'$match': {'category': {'$regex': pattern,
+                                                  '$options': 'i'}}},
+                         {'$sort': {'rating': -1}},
+                         {'$limit': 15}]
     result_dspt = find_image_by_aggregation(db, pipeline_dspt)
     result_name = find_image_by_aggregation(db, pipeline_name)
+    result_cat = find_image_by_aggregation(db, pipeline_category)
     suggestion = set()
     if result_dspt:
         for r in result_dspt:
@@ -61,4 +68,8 @@ def text_suggestion(db, term):
     if result_name:
         for r in result_name:
             suggestion.add(r['business_info']['name'])
+    if result_cat:
+        for r in result_cat:
+            for c in r['category']:
+                suggestion.add(c)
     return suggestion

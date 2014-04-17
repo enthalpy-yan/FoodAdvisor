@@ -47,8 +47,9 @@ def _businesses_info(directory):
                          'category': yelp_info.get('categories', None)}
         location = {'display_name':
                         yelp_info['location']['display_address']}
-        lat, lng = _get_geoinfo(", ".join(location['display_name']))
-        location['details'] = {'latitude': lat, 'longitude': lng}
+        lat, lng = _get_geoinfo(', '.join(location['display_name']))
+        location['details'] = {'type': 'Point',
+                               'coordinates': [lng, lat]}
         business_info['location'] = location
         business_info_dict[id] = business_info
     return business_info_dict

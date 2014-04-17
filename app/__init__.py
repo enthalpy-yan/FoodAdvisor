@@ -10,7 +10,7 @@ app.config['UPLOAD_FOLDER'] = 'app/outputs/imgqueries/'
 app.config['ALLOWED_EXTENSIONS'] = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
 #DB name configuration.
-app.config['MONGO_DBNAME'] = 'test'
+app.config['MONGO_DBNAME'] = 'FoodAdvisor'
 mongo = PyMongo(app, config_prefix='MONGO')
 
 #Set app context global variable
@@ -19,8 +19,7 @@ ctx.push()
 current_app.mycreate = "ajlknl123j1l2k3jn123jnansfkajwe"
 
 # Fake DB data
-current_app.images =
-[
+current_app.images = [
     {
         "business_info": {
             "category": [

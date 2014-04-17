@@ -5,12 +5,16 @@ from flask import Response, request, current_app
 from bson import json_util
 from werkzeug import secure_filename
 from app.apphelpers import upload
+from app.dbhelpers import findhelper
 
 @app.route('/test')
 def test():
-    myname = mongo.db.users.find_one()
+    # pipeline = [{'$match': {'$text': {'$search': 'clam'}}},
+    #             {'$limit': 50}]
+    # images = findhelper.find_image_by_aggregation(mongo.db, pipeline)
+    images = findhelper.find_image_by_id(mongo.db, [1, 20, 30])
     return Response(
-        json_util.dumps(current_app.mycreate),
+        json_util.dumps(images),
         mimetype='application/json'
     )
 
@@ -19,7 +23,7 @@ def test():
 def search():
     # Get the name of the uploaded file
     file = request.files['imgfile']
-    
+
     if file and upload.allowed_file(file.filename):
         # Make the filename safe, remove unsupported chars
         filename = secure_filename(file.filename)

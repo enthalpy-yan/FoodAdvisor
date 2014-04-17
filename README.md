@@ -146,3 +146,8 @@ sortbyname(optional) | filter result by alphabetic
             }
         }
     }
+###Result sample
+    {
+        "result": [...],
+        "status": {"text": last text query, "file": the file name(server side) of the last image query}
+    }

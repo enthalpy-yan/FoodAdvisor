@@ -9,9 +9,21 @@ from app.dbhelpers import findhelper
 
 @app.route('/test')
 def test():
-    images = findhelper.find_image_by_id(mongo.db, [1, 20, 30])
+    images = findhelper.find_all_images(mongo.db)
     return Response(
         json_util.dumps(images),
+        mimetype='application/json'
+    )
+
+@app.route('/foodtexts/search', methods=['GET'])
+def suggestion():
+    """
+    Get word suggestion with the given term.
+    """
+    term = request.args.get('term')
+    suggestion_list = findhelper.text_suggestion(mongo.db, term)
+    return Response(
+        json_util.dumps(suggestion_list),
         mimetype='application/json'
     )
 

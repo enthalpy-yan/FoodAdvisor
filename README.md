@@ -4,6 +4,18 @@ FoodAdvisor is a simple food image search app that helps people to find where
 to eat with the given food image. It is also a Final Project for CS598 Visual
 Information Retrieval in Stevens Institute of Technology.
 
+##Artechiture
+
+In this project, We use Flask framework to create a RESTful service that serves the data for our Front-end rich client application written by AngularJS. Since we chose JSON as our API format, we chose MongoDB as our JSON data store.
+
+##Features
+
+We created a image based food search service hoping to find the most similar foods. We have used Yelp API to provide a location based business information. The features of the app are as follows: 
+
+- Search food image with the given image file.
+- Search food image with the given text: picture description, location or business name.
+- Filter result by alphabetic, location and rating.
+
 ##Technology Stacks
 
 ###Back-end

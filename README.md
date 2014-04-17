@@ -4,6 +4,18 @@ FoodAdvisor is a simple food image search app that helps people to find where
 to eat with the given food image. It is also a Final Project for CS598 Visual
 Information Retrieval in Stevens Institute of Technology.
 
+##Artechiture
+
+In this project, We use Flask framework to create a RESTful service that serves the data for our Front-end rich client application written by AngularJS. Since we chose JSON as our API format, we chose MongoDB as our JSON data store.
+
+##Features
+
+We created a image based food search service hoping to find the most similar foods. We have used Yelp API to provide a location based business information. The features of the app are as follows: 
+
+- Search food image with the given image file.
+- Search food image with the given text: picture description, location or business name.
+- Filter result by alphabetic, location and rating.
+
 ##Technology Stacks
 
 ###Back-end
@@ -38,6 +50,8 @@ Style: [Bootstrap](http://getbootstrap.com/), [LESS](http://lesscss.org/), [Font
         ├── node_modules          (Node dependencies)
 
 ###Configuration
+####Environment
+
   1. Install virtualenv, npm, bower
 
   2. Under the root directory, Install a virtual environment using install.sh (or install.bat for Windows)
@@ -52,8 +66,17 @@ Style: [Bootstrap](http://getbootstrap.com/), [LESS](http://lesscss.org/), [Font
     $ which python
     /Users/hanyan/Desktop/Homework/CS598/FoodAdvisor/flask/bin/python
     ```
-  5. Run the service(under the root directory)
+  5. Run the service(under the root directory), the server should be running without any issues.
     `$ python run.py`
+
+####Data
+
+  - Run preparedata.py script under app/dbhelpers/ to insert data into database(Make sure your local mongodb server is openning).
+  
+    ```
+    $ cd app/dbhelpers
+    $ python preparedata.py
+    ```
 
 ###RESTful Service
 ####Text autocomplete

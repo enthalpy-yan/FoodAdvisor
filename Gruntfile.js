@@ -4,7 +4,7 @@ var proxySnippet = require('grunt-connect-proxy/lib/utils').proxyRequest;
 
 module.exports = function (grunt) {
   require('load-grunt-tasks')(grunt);
-  require('time-grunt')(grunt); 
+  require('time-grunt')(grunt);
 
   grunt.initConfig({
     yeoman: {
@@ -21,17 +21,30 @@ module.exports = function (grunt) {
         }]
       }
     },
+    less: {
+      development: {
+        options: {
+          paths: ['<%= yeoman.app %>/less'],
+          yuicompress: true
+        },
+        files: {
+          '<%= yeoman.app %>/css/app.css': '<%= yeoman.app %>/less/main.less'
+        }
+      }
+    },
     watch: {
       options: {
         livereload: 35729
       },
       src: {
         files: [
+          '<%= yeoman.app %>/less/*',
           '<%= yeoman.app %>/*.html',
           '<%= yeoman.app %>/css/**/*',
           '<%= yeoman.app %>/js/**/*',
           '<%= yeoman.app %>/views/**/*'
         ],
+        tasks: ['less']
         //tasks: ['sync:dist']
       }
     },

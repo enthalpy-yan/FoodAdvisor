@@ -11,7 +11,8 @@ angular.module('foodAdvisor', [
   'ngRoute',
   'ui.bootstrap',
   'ui.date',
-  'angucomplete'
+  'angucomplete',
+  'upload.button'
 ]).
 config(function ($routeProvider, $locationProvider) {
   $routeProvider.

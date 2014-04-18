@@ -22,7 +22,7 @@ body .x-ng-cloak {
   font-size: 30px;
 }
 .my-navbar .links {
-  font-size: 20px;
+  font-size: 18px;
 }
 .my-navbar .link-top-border {
   border-top: 3px solid #f8f8f8;
@@ -67,8 +67,11 @@ body .x-ng-cloak {
 .search-button {
   height: 50px;
   width: 50px;
+  color: #777777;
 }
 .search-button .search-icon {
   padding-top: 22px;
-  color: #777777;
+}
+.search-button:hover {
+  color: #333333;
 }

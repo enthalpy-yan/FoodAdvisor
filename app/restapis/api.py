@@ -31,7 +31,9 @@ def suggestion():
 @app.route('/api/foodimages/search', methods=['POST'])
 def search():
     # Get the name of the uploaded file
-    file = request.files['imgfile']
+    file = request.files['uploadFile']
+
+    print
 
     if file and upload.allowed_file(file.filename):
         # Make the filename safe, remove unsupported chars

@@ -32,7 +32,7 @@ angular.module('foodAdvisor.directives', [])
 function btnTemplate() {
   return '<span class="{{class}}" style="position: relative;overflow: hidden;margin-right: 4px;"' +'>' +
            '<span ng-transclude></span>' +
-           '<input type="file" style="position: absolute;top: 0;right: 0;margin: 0;opacity: 0;filter: alpha(opacity=0);transform: translate(-300px, 0) scale(4);font-size: 23px;direction: ltr;cursor: pointer;">' +
+           '<input type="file" style="width:50px; position: absolute;top: 0;right: 0;margin: 0;opacity: 0;filter: alpha(opacity=0);transform: translate(-300px, 0) scale(4);font-size: 23px;direction: ltr;cursor: pointer;">' +
          '</span>';
 }
 

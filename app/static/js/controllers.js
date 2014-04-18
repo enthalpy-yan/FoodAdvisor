@@ -5,11 +5,15 @@
 angular.module('foodAdvisor.controllers', []).
   controller('AppCtrl', function ($scope) {
   }).
-  controller('searchBarController', function ($scope, $http) {
+  controller('searchBarController', function ($scope, $http, cfpLoadingBar) {
     $scope.currentValue = '';
     $scope.imageData = null;
     $scope.submitText = function() {
         console.log($scope.keywords);
+    };
+    $scope.receiveFromPost = function(data, status) {
+        cfpLoadingBar.complete();
+        console.log(data);
     };
     $scope.getData = function() {
         $http({method: 'GET', url: '/test'}).

@@ -11,7 +11,7 @@ from app.dbhelpers import findhelper
 def test():
     images = findhelper.find_all_images(mongo.db)
     import time
-    time.sleep(2)
+    time.sleep(3)
     return Response(
         json_util.dumps(images),
         mimetype='application/json'
@@ -42,7 +42,8 @@ def search():
         filename = secure_filename(file.filename)
 
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-
+        import time
+        time.sleep(3)
         return Response(
             json_util.dumps(app.config['UPLOAD_FOLDER'] + filename),
             mimetype='application/json'

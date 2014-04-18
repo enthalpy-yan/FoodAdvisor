@@ -2,7 +2,7 @@
 
 /* Directives */
 angular.module('foodAdvisor.directives', [])
-  .directive('uploadButton', ['$parse', '$compile', function($parse, $compile){
+  .directive('uploadButton', ['$parse', '$compile', 'cfpLoadingBar', function($parse, $compile, cfpLoadingBar){
     return {
       restrict: 'E',
       replace: true,
@@ -23,6 +23,7 @@ angular.module('foodAdvisor.directives', [])
           }, false);
           xhr.open("POST", attrs.action);
           xhr.send(fd);
+          cfpLoadingBar.start();
         });
       }
     };

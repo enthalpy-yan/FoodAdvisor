@@ -1,19 +1,25 @@
 <div class="container">
     <div class="row">
-        <div class="search-bar-container">
+        <div class="search-bar-container" ng-controller="searchBarController">
             <div class="col-md-2"></div>
             <div class="search-bar col-md-8">
             <div class="row">
-                <div class="col-md-8">
-                <angucomplete id="ex1"
-                 placeholder="Search foods"
-                 pause="100"
-                 selectedobject="selectedCountry"
-                 localdata="countries"
-                 searchfields="name"
-                 titlefield="name"
-                 minlength="1"
-                 inputclass="form-control form-control-small my-input-bar"/>
+                <div class="col-md-7 col-sm-7 col-xs-7">
+                    <angucomplete id="ex1"
+                     placeholder="Search foods, restaurants, etc"
+                     pause="400"
+                     url="http://localhost:5000/api/foodtexts/search?term="
+                     selectedobject="selectedTerm"
+                     datafield="result"
+                     titlefield="result"
+                     minlength="1"
+                     inputclass="my-form-control my-input-bar"/>
+                </div>
+                <div class="pull-right search-button">
+                    <i class="fa fa-search fa-lg search-icon"> </i>
+                </div>
+                <div class="pull-right search-button">
+                    <i class="fa fa-picture-o fa-lg search-icon"> </i>
                 </div>
             </div>
             </div>

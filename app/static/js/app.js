@@ -8,6 +8,7 @@ angular.module('foodAdvisor', [
 
    //3rd party dependencies
   'ngResource',
+  'ngAnimate',
   'ngRoute',
   'ui.bootstrap',
   'ui.date',

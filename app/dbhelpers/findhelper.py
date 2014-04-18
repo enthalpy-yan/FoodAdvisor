@@ -72,5 +72,5 @@ def text_suggestion(db, term):
         for r in result_cat:
             for c in r['category']:
                 suggestion.add(c)
-    ret = [{'result': s} for s in suggestion]
-    return ret
+    ret = [{'suggestion': s} for s in suggestion]
+    return {'results': ret}

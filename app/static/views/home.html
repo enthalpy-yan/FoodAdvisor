@@ -9,12 +9,15 @@
                      placeholder="Search foods, restaurants, etc"
                      pause="400"
                      url="http://localhost:5000/api/foodtexts/search?term="
-                     selectedobject="selectedTerm"
-                     datafield="result"
-                     titlefield="result"
+                     selectedobject="keywords"
+                     datafield="results"
+                     titlefield="suggestion"
                      minlength="1"
-                     inputclass="my-form-control my-input-bar"/>
+                     inputclass="my-form-control my-input-bar"
+                     ng-model="orderProp"/>
                 </div>
+                {{orderProp}}
+                {{keywords}}
                 <div class="pull-right search-button">
                     <i class="fa fa-search fa-lg search-icon"> </i>
                 </div>

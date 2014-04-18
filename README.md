@@ -8,14 +8,6 @@ Information Retrieval in Stevens Institute of Technology.
 
 In this project, We use Flask framework to create a RESTful service that serves the data for our Front-end rich client application written by AngularJS. Since we chose JSON as our API format, we chose MongoDB as our JSON data store.
 
-##Features
-
-We created a image based food search service hoping to find the most similar foods. We have used Yelp API to provide a location based business information. The features of the app are as follows:
-
-- Search food image with the given image file.
-- Search food image with the given text: picture description, location or business name.
-- Filter result by alphabetic, location and rating.
-
 ##Technology Stacks
 
 ###Back-end
@@ -70,6 +62,40 @@ Style: [Bootstrap](http://getbootstrap.com/), [LESS](http://lesscss.org/), [Font
     ```
   5. Run the service(under the root directory), the server should be running without any issues.
     `$ python run.py`
+
+####To Do List
+
+#####Image Searching Algorithm:
+
+- Collect images 
+- Extract SIFT features from all the images and save them to SIFT pool
+- Cluster all SIFT features
+- Re-represent each image with bag of words
+- Calculate tf-idf for all images
+- Do inverted file indexing
+- Accept incoming image as query
+- Return highest rank images
+
+#####Back-end server:
+
+- Text suggestion search from the field including ‘description’, ‘category’, ‘name’. 
+- Full text search from the field including ‘description’, ‘category’, ‘name’.
+- REST API for searching food image with the given image file.
+- REST API for Search food image with the given text: picture description, location or business name.
+
+
+#####Front-end:
+
+- A Flat, minimal looking interface.
+- Single page. 
+- Text searching bar with autocomplete support.
+- Upload file through XHR.
+- Single upload file button with automatic submit.
+- Menu button for sorting result.
+- Load more button for pagination.
+- Progress bar for any long wait operation.
+- Animations for better user experience.
+
 
 ####Data
 

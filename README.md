@@ -10,7 +10,7 @@ In this project, We use Flask framework to create a RESTful service that serves 
 
 ##Features
 
-We created a image based food search service hoping to find the most similar foods. We have used Yelp API to provide a location based business information. The features of the app are as follows: 
+We created a image based food search service hoping to find the most similar foods. We have used Yelp API to provide a location based business information. The features of the app are as follows:
 
 - Search food image with the given image file.
 - Search food image with the given text: picture description, location or business name.
@@ -55,13 +55,15 @@ Style: [Bootstrap](http://getbootstrap.com/), [LESS](http://lesscss.org/), [Font
   1. Install virtualenv, npm, bower
 
   2. Under the root directory, Install a virtual environment using install.sh (or install.bat for Windows)
-     
+
     `$ ./install.sh`
+
   3. Activate the corresponding environment. do the following
-    
+
     `$ source flask/bin/activate`
+
   4. Now, when you check your python path, it should be like this
-        
+
     ```
     $ which python
     /Users/hanyan/Desktop/Homework/CS598/FoodAdvisor/flask/bin/python
@@ -72,7 +74,7 @@ Style: [Bootstrap](http://getbootstrap.com/), [LESS](http://lesscss.org/), [Font
 ####Data
 
   - Run preparedata.py script under app/dbhelpers/ to insert data into database(Make sure your local mongodb server is openning).
-  
+
     ```
     $ cd app/dbhelpers
     $ python preparedata.py

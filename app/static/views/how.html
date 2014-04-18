@@ -1,7 +1,227 @@
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-8">
-            <h1>How</h1>
-        </div>
-    </div>
+<div class="container">
+<br>
+<p>FoodAdvisor is a simple food image search app that helps people to find where
+to eat with the given food image. It is also a Final Project for CS598 Visual
+Information Retrieval in Stevens Institute of Technology.</p>
+
+<h2>
+<a name="user-content-artechiture" class="anchor" href="#artechiture"><span class="octicon octicon-link"></span></a>Artechiture</h2>
+
+<p>In this project, We use Flask framework to create a RESTful service that serves the data for our Front-end rich client application written by AngularJS. Since we chose JSON as our API format, we chose MongoDB as our JSON data store.</p>
+
+<h2>
+<a name="user-content-features" class="anchor" href="#features"><span class="octicon octicon-link"></span></a>Features</h2>
+
+<p>We created a image based food search service hoping to find the most similar foods. We have used Yelp API to provide a location based business information. The features of the app are as follows:</p>
+
+<ul>
+<li>Search food image with the given image file.</li>
+<li>Search food image with the given text: picture description, location or business name.</li>
+<li>Filter result by alphabetic, location and rating.</li>
+</ul><h2>
+<a name="user-content-technology-stacks" class="anchor" href="#technology-stacks"><span class="octicon octicon-link"></span></a>Technology Stacks</h2>
+
+<h3>
+<a name="user-content-back-end" class="anchor" href="#back-end"><span class="octicon octicon-link"></span></a>Back-end</h3>
+
+<p>API Server: <a href="http://flask.pocoo.org/">Flask 0.10.1</a></p>
+
+<p>Persistence: <a href="https://www.mongodb.org/">MongoDB 2.6</a></p>
+
+<p>Image Search: <a href="http://docs.opencv.org/trunk/doc/py_tutorials/py_setup/py_table_of_contents_setup/py_table_of_contents_setup.html#py-table-of-content-setup">OpenCV-Python</a>, <a href="http://www.scipy.org/scipylib/index.html">Scipy Library</a>, <a href="http://www.numpy.org">Numpy</a></p>
+
+<p>Data source: <a href="http://www.yelp.com">Yelp</a>(food images), <a href="http://api.yelp.com">Yelp API</a>(business info)</p>
+
+<h3>
+<a name="user-content-front-end" class="anchor" href="#front-end"><span class="octicon octicon-link"></span></a>Front-end</h3>
+
+<p>App: <a href="http://angularjs.org/">AngularJS</a>, <a href="http://lodash.com/">Lo-Dash</a>, <a href="http://gruntjs.com/">Grunt</a></p>
+
+<p>Style: <a href="http://getbootstrap.com/">Bootstrap</a>, <a href="http://lesscss.org/">LESS</a>, <a href="http://fortawesome.github.io/Font-Awesome/">FontAwesome</a></p>
+
+<h2>
+<a name="user-content-development" class="anchor" href="#development"><span class="octicon octicon-link"></span></a>Development</h2>
+
+<h3>
+<a name="user-content-folder-structure" class="anchor" href="#folder-structure"><span class="octicon octicon-link"></span></a>Folder Structure</h3>
+
+<pre><code>FoodAdvisor/
+    ├── app
+    │   ├── apphelpers        (Self-created global use functions)
+    │   ├── dbhelpers         (Self-created db-related functions)
+    │   ├── imagesearchapis   (Implements image search apis)
+    │   ├── restapis          (Implements RESTful apis )
+    │   ├── routes            (App routes)
+    │   └── static            (Front-end Angular App)
+    │   └── outputs           (folder for saving output files)
+    ├── flask                 (Flask virtual environment)
+    ├── node_modules          (Node dependencies)
+</code></pre>
+
+<h3>
+<a name="user-content-configuration" class="anchor" href="#configuration"><span class="octicon octicon-link"></span></a>Configuration</h3>
+
+<h4>
+<a name="user-content-environment" class="anchor" href="#environment"><span class="octicon octicon-link"></span></a>Environment</h4>
+
+<ol>
+<li><p>Install virtualenv, npm, bower</p></li>
+<li>
+<p>Under the root directory, Install a virtual environment using install.sh (or install.bat for Windows)</p>
+
+<p><code>$ ./install.sh</code></p>
+</li>
+<li>
+<p>Activate the corresponding environment. do the following</p>
+
+<p><code>$ source flask/bin/activate</code></p>
+</li>
+<li>
+<p>Now, when you check your python path, it should be like this</p>
+
+<pre><code>$ which python
+/Users/hanyan/Desktop/Homework/CS598/FoodAdvisor/flask/bin/python
+</code></pre>
+</li>
+<li>Run the service(under the root directory), the server should be running without any issues.
+<code>$ python run.py</code>
+</li>
+</ol><h4>
+<a name="user-content-data" class="anchor" href="#data"><span class="octicon octicon-link"></span></a>Data</h4>
+
+<ul>
+<li>
+<p>Run preparedata.py script under app/dbhelpers/ to insert data into database(Make sure your local mongodb server is openning).</p>
+
+<pre><code>$ cd app/dbhelpers
+$ python preparedata.py
+</code></pre>
+</li>
+</ul><h3>
+<a name="user-content-restful-service" class="anchor" href="#restful-service"><span class="octicon octicon-link"></span></a>RESTful Service</h3>
+
+<h4>
+<a name="user-content-text-autocomplete" class="anchor" href="#text-autocomplete"><span class="octicon octicon-link"></span></a>Text autocomplete</h4>
+
+<table>
+<thead><tr>
+<th align="left">Resource</th>
+<th align="right">Method</th>
+</tr></thead>
+<tbody><tr>
+<td align="left">/api/foodtext/search       </td>
+<td align="right">GET</td>
+</tr></tbody>
+</table><table>
+<thead><tr>
+<th align="left">Parameter</th>
+<th align="right">Description</th>
+</tr></thead>
+<tbody><tr>
+<td align="left">term                            </td>
+<td align="right">keyword strings or prefixes</td>
+</tr></tbody>
+</table><h4>
+<a name="user-content-food-imagetext-search" class="anchor" href="#food-imagetext-search"><span class="octicon octicon-link"></span></a>food image/text search</h4>
+
+<table>
+<thead><tr>
+<th align="left">Resource</th>
+<th align="right">Method</th>
+</tr></thead>
+<tbody><tr>
+<td align="left">/api/foodimages/search  </td>
+<td align="right">GET/POST</td>
+</tr></tbody>
+</table><p>Resource:</p>
+
+<table>
+<thead><tr>
+<th align="left">Parameter</th>
+<th align="right">Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td align="left">longitude(optional)</td>
+<td align="right">client longitude information</td>
+</tr>
+<tr>
+<td align="left">latitude(optional)</td>
+<td align="right">client latitude information</td>
+</tr>
+<tr>
+<td align="left">offset(optional)</td>
+<td align="right">Offset the list of returned image results by this amount</td>
+</tr>
+<tr>
+<td align="left">query(optional)</td>
+<td align="right">text query</td>
+</tr>
+<tr>
+<td align="left">sortbylocation(optional)</td>
+<td align="right">filter result by location</td>
+</tr>
+<tr>
+<td align="left">sortbyrating(optional)</td>
+<td align="right">filter result by rating</td>
+</tr>
+<tr>
+<td align="left">sortbyname(optional)</td>
+<td align="right">filter result by alphabetic</td>
+</tr>
+</tbody>
+</table><h3>
+<a name="user-content-db-document-sample" class="anchor" href="#db-document-sample"><span class="octicon octicon-link"></span></a>DB document sample</h3>
+
+<pre><code>{
+    "description": "Amazing chicken tikka and aloo tacos",
+    "abspath": "/Users/hanyan/Desktop/Homework/CS598/FoodAdvisor/app/static/images/foods/23rd-street-cafe-los-angeles/Amazing chicken tikka and aloo tacos.jpg",
+    "business_id": "23rd-street-cafe-los-angeles",
+    "image_id": 0,
+    "relpath": "images/foods/23rd-street-cafe-los-angeles/Amazing chicken tikka and aloo tacos.jpg",
+    "business_info": {
+        "category": [
+            [
+                "Indian",
+                "indpak"
+            ],
+            [
+                "Mexican",
+                "mexican"
+            ],
+            [
+                "American (New)",
+                "newamerican"
+            ]
+        ],
+        "rating": 4.0,
+        "review_count": 178,
+        "name": "23rd Street Cafe",
+        "phone": "+1-213-749-1593",
+        "location": {
+            "display_name": [
+                "936 W 23rd St",
+                "University Park",
+                "Los Angeles, CA 90007"
+            ],
+            "details" : {
+                "type" : "Point",
+                "coordinates" : [
+                    -118.2808464,
+                    34.033785
+                ]
+            }
+        }
+    }
+}
+</code></pre>
+
+<h3>
+<a name="user-content-result-sample" class="anchor" href="#result-sample"><span class="octicon octicon-link"></span></a>Result sample</h3>
+
+<pre><code>{
+    "result": [...],
+    "status": {"text": last text query, "file": the file name(server side) of the last image query}
+}
+</code></pre>
 </div>

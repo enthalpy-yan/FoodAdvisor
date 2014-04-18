@@ -9,7 +9,7 @@ body {
 }
 
 .my-navbar {
-    border-top: 10px solid #27ae60;
+    border-top: 6px solid #2980b9;
     padding: 15px 0 8px 0px;
     -webkit-box-shadow: 0px 1px 1px 0px rgba(0,0,0,0.05);
     box-shadow: 0px 1px 1px 0px rgba(0,0,0,0.05);
@@ -39,4 +39,14 @@ body {
     margin-top: 11px;
     margin-left: 10px;
     padding-top: 5px;
+}
+
+.animate-enter {
+    -webkit-transition: 1s linear all; /* Chrome */
+    transition: 1s linear all;
+    opacity: 0;
+}
+
+.animate-enter.animate-enter-active {
+    opacity: 1;
 }

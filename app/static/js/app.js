@@ -12,7 +12,8 @@ angular.module('foodAdvisor', [
   'ngRoute',
   'ui.bootstrap',
   'ui.date',
-  'angucomplete'
+  'angucomplete',
+  'chieffancypants.loadingBar'
 ]).
 config(function ($routeProvider, $locationProvider) {
   $routeProvider.

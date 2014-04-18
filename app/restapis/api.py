@@ -10,6 +10,8 @@ from app.dbhelpers import findhelper
 @app.route('/test')
 def test():
     images = findhelper.find_all_images(mongo.db)
+    import time
+    time.sleep(2)
     return Response(
         json_util.dumps(images),
         mimetype='application/json'

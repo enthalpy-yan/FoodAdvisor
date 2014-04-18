@@ -3,11 +3,13 @@
     padding-bottom: 8px;
     height: 100px;
     .search-bar {
-        background-color: #f8f8f8;
+        background-color: @component-bg;
         height: 50px;
+        -webkit-box-shadow: 0px 1px 1px 0px rgba(0,0,0,0.05);
+        box-shadow: 0px 1px 1px 0px rgba(0,0,0,0.05);
         .my-input-bar {
             height: 50px;
-            background-color: #f8f8f8;
+            background-color: @component-bg;
         }
     }
 }
@@ -16,7 +18,7 @@
     outline: 0;
     border: none;
     width: 100%;
-    background-color: #f8f8f8;
+    background-color: @component-bg;
     padding: 6px;
     border-radius: 2px;
     margin-bottom: 5px;
@@ -38,26 +40,20 @@
     color: #333333;
 }
 
-.image-container {
-    height: 900px;
-    .image-card {
-        height:330px;
-        margin-bottom: 31px;
-        .content {
-            width: 100%;
-            height: 100%;
-            background-color: #f8f8f8;
-            -webkit-box-shadow: 0px 1px 1px 0px rgba(0,0,0,0.05);
-            box-shadow: 0px 1px 1px 0px rgba(0,0,0,0.05);
-            .image-wrapper {
-                width: 100%;
-                height: 250px;
-                background-color: grey;
-                overflow: hidden;
-                .image-info {
-                    width: 100%;
-                }
-            }
-        }
+.load-more {
+    background-color: #dfdfdf;
+    height: 50px;
+    margin-top: 10px;
+    margin-bottom: 50px;
+    bottom: 0;
+    cursor: pointer;
+    #more {
+        background: #dfdfdf;
+        display: block;
+        padding: 1em 0;
+        text-align: center;
+        text-transform: uppercase;
+        font-size: 1.4em;
+        color: rgba(0,0,0,0.3);
     }
 }

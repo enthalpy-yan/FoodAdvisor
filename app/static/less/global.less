@@ -1,7 +1,12 @@
+@app-bg: #f0f0f0;
+@component-bg: #f8f8f8;
+@border-top-bg: #2980b9;
+@business-name: #3699db;
+
 body {
     font-family:"Roboto", sans-serif;
     font-weight: 300;
-    background-color: #f0f0f0;
+    background-color: @app-bg;
     -webkit-font-smoothing: subpixel-antialiased;
     [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
         display: none !important;
@@ -9,7 +14,6 @@ body {
 }
 
 .my-navbar {
-    border-top: 6px solid #2980b9;
     padding: 15px 0 8px 0px;
     -webkit-box-shadow: 0px 1px 1px 0px rgba(0,0,0,0.05);
     box-shadow: 0px 1px 1px 0px rgba(0,0,0,0.05);
@@ -23,7 +27,7 @@ body {
     }
 
     .link-top-border {
-        border-top: 3px solid #f8f8f8;
+        border-top: 3px solid @component-bg;
     }
 
     .link-top-border:hover, :focus{
@@ -41,12 +45,52 @@ body {
     padding-top: 5px;
 }
 
+.animate-repeat {
+    line-height:40px;
+    list-style:none;
+    box-sizing:border-box;
+}
+
+.animate-repeat.ng-move,
+.animate-repeat.ng-enter,
+.animate-repeat.ng-leave {
+    -webkit-transition:all linear 1s;
+    transition:all linear 1s;
+}
+
+.animate-repeat.ng-leave.ng-leave-active,
+.animate-repeat.ng-move,
+.animate-repeat.ng-enter {
+    opacity:0;
+    max-height:0;
+}
+
+.animate-repeat.ng-leave,
+.animate-repeat.ng-move.ng-move-active,
+.animate-repeat.ng-enter.ng-enter-active {
+    opacity:1;
+    max-height:40px;
+}
+
+.animate-enter, .animate-leave {
+  -webkit-transition:all 2s ease;
+  -moz-transition:all 2s ease;
+  -o-transition:all 2s ease;
+  transition:all 2s ease;
+}
+
 .animate-enter {
-    -webkit-transition: 1s linear all; /* Chrome */
-    transition: 1s linear all;
-    opacity: 0;
+    left: -100%;
 }
 
 .animate-enter.animate-enter-active {
-    opacity: 1;
+    left: 0;
+}
+
+.animate-leave {
+    left: 0;
+}
+
+.animate-leave.animate-leave-active {
+    left: 100%;
 }

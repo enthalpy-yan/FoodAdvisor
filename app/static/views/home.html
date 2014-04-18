@@ -1,9 +1,9 @@
 <div class="container" ng-controller="searchBarController">
     <div class="row">
         <div class="search-bar-container">
-            <div class="col-md-2"></div>
+            <div class="col-md-2">
+            </div>
             <div class="search-bar col-md-8">
-            <div class="row">
                 <div class="col-md-7 col-sm-7 col-xs-7">
                     <angucomplete id="ex1"
                      placeholder="Search foods, restaurants, etc"
@@ -28,19 +28,23 @@
                     <i class="fa fa-search fa-lg search-icon"> </i>
                 </div>
             </div>
-            </div>
             <div class="col-md-2"></div>
         </div>
     </div>
     <div class="row">
         <div class="row image-container" ng-init="getData()">
-            <div class="col-md-4 col-sm-6 col-xs-12 image-card" ng-repeat="item in imageData" ng-animate="{enter: 'animate-enter', leave: 'animate-leave'}">
+            <div class="col-md-4 col-sm-6 col-xs-12 image-card" ng-repeat="item in imageData">
                 <div class="content">
                     <div class="image-wrapper">
                         <img ng-src="{{item.relpath}}" class="image-info">
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="load-more" ng-show="imageData.length != 0" ng-click="nextPage()">
+            <p id="more">MORE</p>
         </div>
     </div>
     </div>

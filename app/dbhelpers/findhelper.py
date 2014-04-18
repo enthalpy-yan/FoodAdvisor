@@ -13,7 +13,7 @@ def _raw_string(s):
 def find_one_image(db):
     return db.images.find_one()
 
-def find_all_images(db, mylimit=9):
+def find_all_images(db, mylimit=20):
     return db.images.find().limit(mylimit)
 
 def find_image_by_aggregation(db, pipeline):

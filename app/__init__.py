@@ -1,9 +1,12 @@
 from flask import current_app
 from flask import Flask
 from flask.ext.pymongo import PyMongo
+from flask.ext.restful import Api
 
 app = Flask(__name__, static_url_path='')
 app.config.from_object('config')
+
+restapi = Api(app)
 
 # upload image configuration
 app.config['UPLOAD_FOLDER'] = 'app/outputs/imgqueries/'
@@ -137,4 +140,7 @@ current_app.images = [
 ]
 from app.routes import index
 from app.restapis import api
+
+restapi.add_resource(api.UpLoad, '/api/foodimages/search')
+restapi.add_resource(api.Suggestion, '/api/foodtexts/search')
 

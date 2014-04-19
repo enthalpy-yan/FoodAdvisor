@@ -6,6 +6,7 @@ from bson import json_util
 from werkzeug import secure_filename
 from app.apphelpers import upload
 from app.dbhelpers import findhelper
+from app.imagesearchapis import imagesearch
 from flask.ext.restful import Api, Resource, reqparse
 
 
@@ -61,17 +62,22 @@ class UpLoad(Resource):
             file.save(abspath)
 
             # call search_by_image(indexmatrix, imagepath) to get images list
-            imagesrst = [1, 3]
+            imagesrst = imagesearch.search_image(abspath,
+                                     current_app.codebook,
+                                     current_app.tfidf)
 
             businessinfo = findhelper.find_image_by_id(mongo.db, imagesrst)
-            query = args['query']
-            res = {
-                'result': businessinfo,
-                'status': { 'text': query, 'file': abspath }
-            }
+
+            # print businessinfo.__class__
+
+            # query = args['query']
+            # res = {
+            #     'result': businessinfo,
+            #     'status': { 'text': query, 'file': abspath }
+            # }
 
             return Response(
-                json_util.dumps(res),
+                json_util.dumps(businessinfo),
                 mimetype='application/json'
             )
 

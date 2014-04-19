@@ -12,6 +12,7 @@ angular.module('foodAdvisor.controllers', []).
     $scope.distance = 0;
     $scope.lat = 0;
     $scope.lng = 0;
+    $scope.newData = null;
     //Geo location initialization
     $scope.getCurrentLocation = function() {
       geolocation.getLocation().then(function(data){
@@ -26,6 +27,7 @@ angular.module('foodAdvisor.controllers', []).
     //Callback function for receive data after post file to server.
     $scope.receiveFromPost = function(data, status) {
       cfpLoadingBar.complete();
+      $scope.imageData = JSON.parse(data);
     };
 
     $scope.getData = function() {

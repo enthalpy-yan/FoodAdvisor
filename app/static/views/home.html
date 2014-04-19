@@ -30,7 +30,7 @@
     </div>
     <div class="row">
         <div class="row image-container" ng-init="getData()">
-            <div class="col-md-4 col-sm-6 col-xs-12 image-card" ng-repeat="item in imageData">
+            <div class="col-md-4 col-sm-6 col-xs-12 image-card" ng-repeat="item in imageData track by $index">
                 <div class="content">
                     <div class="image-title">
                         <p tooltip-placement="top"

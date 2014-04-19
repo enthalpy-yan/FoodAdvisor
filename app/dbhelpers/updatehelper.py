@@ -1,7 +1,17 @@
-import json
+"""
+script for update DB, add new field description_search.
+"""
+
 from pymongo import MongoClient
 
 def update_collection(db_name, collection_name):
+    """
+    Update image collections with new field, description_search.
+    
+    Parameter:
+        db_name: database name
+        collection_name: collection name
+    """
     client = MongoClient('localhost', 27017)
     db = client[db_name]
     collection = db[collection_name]

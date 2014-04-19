@@ -85,24 +85,25 @@ class UpLoad(Resource):
         args = self.reqparse.parse_args()
         abspath = args['file']
         query = args['query']
+        offset = args['offset']
 
         if query and abspath is None:
             if args['sortbyrating']:
-                querylist = findhelper.sort_text_by_rating(mongo.db, query)
+                querylist = findhelper.sort_text_by_rating(mongo.db, query, offset)
             elif args['sortbyname']:
-                querylist = findhelper.sort_text_by_name(mongo.db, query)
+                querylist = findhelper.sort_text_by_name(mongo.db, query, offset)
             else:
-                querylist = findhelper.find_image_by_text(mongo.db, query)
+                querylist = findhelper.find_image_by_text(mongo.db, query, offset)
 
         elif abspath and query is None:
             # call search_by_image(imagepath) to get images list
             imagesrst = [4459,214]
             if args['sortbyrating']:
-                querylist = findhelper.sort_image_by_rating(mongo.db, imagesrst)
+                querylist = findhelper.sort_image_by_rating(mongo.db, imagesrst, offset)
             elif args['sortbyname']:
-                querylist = findhelper.sort_image_by_name(mongo.db, imagesrst)
+                querylist = findhelper.sort_image_by_name(mongo.db, imagesrst, offset)
             else:
-                querylist = findhelper.find_image_by_id(mongo.db, imagesrst)
+                querylist = findhelper.find_image_by_id(mongo.db, imagesrst, offset)
 
         res = {
             'result': querylist,

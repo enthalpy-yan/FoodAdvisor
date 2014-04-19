@@ -1,5 +1,5 @@
 import os
-from app import app
+from app import app, redis
 from app import mongo
 from flask import Response, request, current_app
 from bson import json_util
@@ -60,7 +60,7 @@ class UpLoad(Resource):
             abspath = os.path.join(os.path.abspath(''), savepath)
             file.save(abspath)
 
-            # call search_by_image(indexmatrix, imagepath) to get images list
+            # call search_by_image(imagepath) to get images list
             imagesrst = [1, 3]
 
             businessinfo = findhelper.find_image_by_id(mongo.db, imagesrst)
@@ -80,17 +80,26 @@ class UpLoad(Resource):
         abspath = args['file']
         query = args['query']
 
-        # call search_by_image(indexmatrix, imagepath) to get images list
-        imagesrst = [4459,214]
+        if query and abspath is None:
+            if args['sortbyrating']:
+                querylist = findhelper.sort_text_by_rating(mongo.db, query)
+            elif args['sortbyname']:
+                querylist = findhelper.sort_text_by_name(mongo.db, query)
+            else:
+                querylist = findhelper.find_image_by_text(mongo.db, query)
 
-        if args['sortbyrating']:
-            sorting = findhelper.sort_by_rating(mongo.db, imagesrst)
-
-        if args['sortbyname']:
-            sorting = findhelper.sort_by_name(mongo.db, imagesrst)
+        elif abspath and query is None:
+            # call search_by_image(imagepath) to get images list
+            imagesrst = [4459,214]
+            if args['sortbyrating']:
+                querylist = findhelper.sort_image_by_rating(mongo.db, imagesrst)
+            elif args['sortbyname']:
+                querylist = findhelper.sort_image_by_name(mongo.db, imagesrst)
+            else:
+                querylist = findhelper.find_image_by_id(mongo.db, imagesrst)
 
         res = {
-            'result': sorting,
+            'result': querylist,
             'status': { 'text': query, 'file': abspath }
         }
 

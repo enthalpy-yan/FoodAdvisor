@@ -2,11 +2,13 @@ from flask import current_app
 from flask import Flask
 from flask.ext.pymongo import PyMongo
 from flask.ext.restful import Api
+import redis
 
 app = Flask(__name__, static_url_path='')
 app.config.from_object('config')
 
 restapi = Api(app)
+redis = redis.Redis()
 
 # upload image configuration
 app.config['UPLOAD_FOLDER'] = 'app/outputs/imgqueries/'

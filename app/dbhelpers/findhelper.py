@@ -92,13 +92,25 @@ def text_suggestion(db, term):
     ret = [{'suggestion': s} for s in suggestion]
     return {'results': ret[:15]}
 
-def sort_by_rating(db, image_ids):
+def sort_text_by_rating(db, keywords):
+    pipeline = [{'$match': {'$text': {'$search': keywords}}},
+                {'$sort': {'business_info.rating': -1}},
+                {'$limit': 50}]
+    return find_image_by_aggregation(db, pipeline)
+
+def sort_text_by_name(db, keywords):
+    pipeline = [{'$match': {'$text': {'$search': keywords}}},
+                {'$sort': {'business_info.name': 1}},
+                {'$limit': 50}]
+    return find_image_by_aggregation(db, pipeline)
+
+def sort_image_by_rating(db, image_ids):
     pipeline = [{'$match': {'image_id': {'$in': image_ids}}},
                 {'$sort': {'business_info.rating': -1}},
                 {'$limit': 50}]
     return find_image_by_aggregation(db, pipeline)
 
-def sort_by_name(db, image_ids):
+def sort_image_by_name(db, image_ids):
     pipeline = [{'$match': {'image_id': {'$in': image_ids}}},
                 {'$sort': {'business_info.name': 1}},
                 {'$limit': 50}]

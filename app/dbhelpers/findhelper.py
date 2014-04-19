@@ -2,6 +2,9 @@
 Module for database queries.
 """
 import re
+from nltk.corpus import stopwords
+
+CACHEDSTOPWORDS = stopwords.words("english")
 
 def _raw_string(s):
     if isinstance(s, str):
@@ -55,10 +58,12 @@ def text_suggestion(db, term):
     """
     raw_string_pattern = _raw_string('^' + term)
     pattern = re.compile(raw_string_pattern, re.IGNORECASE)
-    pipeline_dspt = [{'$match': {'description': {'$regex': pattern,
-                                                 '$options': 'i'}}},
+    pipeline_dspt = [{'$project': {'des': '$description_search'}},
+                     {'$unwind': '$des'},
+                     {'$match': {'des': {'$regex': pattern,
+                                         '$options': 'i'}}},
                      {'$sort': {'rating': -1}},
-                     {'$limit': 15}]
+                     {'$limit': 100}]
     pipeline_name = [{'$match': {'business_info.name': {'$regex': pattern,
                                           '$options': 'i'}}},
                      {'$sort': {'rating': -1}},
@@ -75,7 +80,8 @@ def text_suggestion(db, term):
     suggestion = set()
     if result_dspt:
         for r in result_dspt:
-            suggestion.add(r['description'])
+            if r['des'] not in CACHEDSTOPWORDS:
+                suggestion.add(r['des'])
     if result_name:
         for r in result_name:
             suggestion.add(r['business_info']['name'])
@@ -84,4 +90,4 @@ def text_suggestion(db, term):
             for c in r['category']:
                 suggestion.add(c)
     ret = [{'suggestion': s} for s in suggestion]
-    return {'results': ret}
+    return {'results': ret[:15]}

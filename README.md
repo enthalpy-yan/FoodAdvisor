@@ -105,6 +105,7 @@ Style: [Bootstrap](http://getbootstrap.com/), [LESS](http://lesscss.org/), [Font
     $ cd app/dbhelpers
     $ python preparedata.py
     ```
+  - Then, create text index for the specific field.(They are 'description', 'name' in our project).
 
 ###RESTful Service
 ####Text autocomplete

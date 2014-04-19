@@ -33,7 +33,9 @@
             <div class="col-md-4 col-sm-6 col-xs-12 image-card" ng-repeat="item in imageData">
                 <div class="content">
                     <div class="image-title">
-                        <p>"{{item.description | cut:true:30:' ...'}}"</p>
+                        <p tooltip-placement="top"
+                           tooltip="{{item.description}}"
+                           tooltip-trigger="{{{true: 'mouseenter', false: 'never'}[item.description.length > 30]}}">"{{item.description | cut:true:30:' ...'}}"</p>
                     </div>
                     <div class="image-wrapper">
                         <img ng-src="{{item.relpath}}" class="image-info">

@@ -23,9 +23,16 @@ angular.module('foodAdvisor.controllers', []).
     $scope.submitText = function() {
     };
 
+    //Callback function for receive data after post file to server.
     $scope.receiveFromPost = function(data, status) {
       cfpLoadingBar.complete();
     };
+
+    //Function for trigger angular ui-tooltip.
+    $scope.isLonger = function(descrition) {
+      // return description.length > 30 ? true : false;
+      console.log(description);
+    }
 
     $scope.getData = function() {
       $http({method: 'GET', url: '/test'}).
@@ -36,6 +43,7 @@ angular.module('foodAdvisor.controllers', []).
       });
     };
 
+    //Function for set rating color with the given rating score.
     $scope.ratingColor = function(rating) {
       function setColor(color) {
         return {'background' : color};
@@ -51,6 +59,7 @@ angular.module('foodAdvisor.controllers', []).
       }
     };
 
+    //Function for calculate distance between two Geo location.
     $scope.getDistance = function(lat1, lon1, lat2, lon2) {
       //Radius of the earth in:  1.609344 miles,  6371 km  | var R = (6371 / 1.609344);
       var R = 3958.7558657440545; // Radius of earth in Miles
@@ -62,6 +71,9 @@ angular.module('foodAdvisor.controllers', []).
       var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
       var d = R * c;
 
+      if (d > 5000) {
+        return null;
+      }
       return d.toFixed(2);
     };
   });

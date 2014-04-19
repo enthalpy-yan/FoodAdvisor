@@ -1,5 +1,4 @@
 python virtualenv.py flask
-python -m nltk.downloader stopwords
 flask/bin/pip install setuptools --no-use-wheel --upgrade
 flask/bin/pip install flask
 flask/bin/pip install flask-login
@@ -15,3 +14,4 @@ flask/bin/pip install geopy
 flask/bin/pip install oauth2
 flask/bin/pip install pymongo
 flask/bin/pip install nltk
+python -m nltk.downloader stopwords

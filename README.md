@@ -56,6 +56,15 @@ Style: [Bootstrap](http://getbootstrap.com/), [LESS](http://lesscss.org/), [Font
     
     `$ python -m nltk.downloader stopwords`
 
+####Data
+
+  - Run preparedata.py script under app/dbhelpers/ to insert data into database(Make sure your local mongodb server is openning).
+
+    ```
+    $ cd app/dbhelpers
+    $ python preparedata.py
+    ```
+
 ####To Do List
 
 #####Image Searching Algorithm:
@@ -88,17 +97,6 @@ Style: [Bootstrap](http://getbootstrap.com/), [LESS](http://lesscss.org/), [Font
 - Load more button for pagination.
 - Progress bar for any long wait operation.
 - Animations for better user experience.
-
-
-####Data
-
-  - Run preparedata.py script under app/dbhelpers/ to insert data into database(Make sure your local mongodb server is openning).
-
-    ```
-    $ cd app/dbhelpers
-    $ python preparedata.py
-    ```
-  - Then, create text index for the specific field.(They are 'description', 'name' in our project).
 
 ###RESTful Service
 ####Text autocomplete

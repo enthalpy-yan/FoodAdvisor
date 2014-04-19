@@ -39,7 +39,6 @@ class UpLoad(Resource):
 
     def __init__(self):
         self.reqparse = reqparse.RequestParser()
-        self.reqparse.add_argument('text', type=str)
         self.reqparse.add_argument('file', type=str)
         self.reqparse.add_argument('longitude', type=str)
         self.reqparse.add_argument('latitude', type=str)
@@ -65,10 +64,10 @@ class UpLoad(Resource):
             imagesrst = [1, 3]
 
             businessinfo = findhelper.find_image_by_id(mongo.db, imagesrst)
-            text = args['text']
+            query = args['query']
             res = {
                 'result': businessinfo,
-                'status': { 'text': text, 'file': abspath }
+                'status': { 'text': query, 'file': abspath }
             }
 
             return Response(
@@ -78,10 +77,24 @@ class UpLoad(Resource):
 
     def get(self):
         args = self.reqparse.parse_args()
-        text = args['text']
-        tt = findhelper.find_image_by_text(mongo.db, text)
+        abspath = args['file']
+        query = args['query']
+
+        # call search_by_image(indexmatrix, imagepath) to get images list
+        imagesrst = [4459,214]
+
+        if args['sortbyrating']:
+            sorting = findhelper.sort_by_rating(mongo.db, imagesrst)
+
+        if args['sortbyname']:
+            sorting = findhelper.sort_by_name(mongo.db, imagesrst)
+
+        res = {
+            'result': sorting,
+            'status': { 'text': query, 'file': abspath }
+        }
 
         return Response(
-            json_util.dumps(tt),
+            json_util.dumps(res),
             mimetype='application/json'
         )

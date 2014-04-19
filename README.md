@@ -44,28 +44,15 @@ Style: [Bootstrap](http://getbootstrap.com/), [LESS](http://lesscss.org/), [Font
 ###Configuration
 ####Environment
 
-  1. Install virtualenv, npm, bower
+  1. Under the root directory, install all dependencies.
 
-  2. Under the root directory, Install a virtual environment using install.sh (or install.bat for Windows)
+    `$ ./installtolocal.sh`
 
-    `$ ./install.sh`
-
-  3. Activate the corresponding environment. do the following
-
-    `$ source flask/bin/activate`
-
-  4. Now, when you check your python path, it should be like this
-
-    ```
-    $ which python
-    /Users/hanyan/Desktop/Homework/CS598/FoodAdvisor/flask/bin/python
-    ```
-    
-  5. Run the service(under the root directory), the server should be running without any issues.
+  2. Run the service(under the root directory), the server should be running without any issues.
 
     `$ python run.py`
   
-  6. After setting virtual environment manually, you also need to install nltk stopwords libirary by your self.
+  Note: If there is an error about nltk, try to install it manually as follow:
     
     `$ python -m nltk.downloader stopwords`
 

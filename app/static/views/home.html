@@ -29,11 +29,27 @@
         </div>
     </div>
     <div class="row">
-        <div class="row image-container">
+        <div class="row image-container" ng-init="getData()">
             <div class="col-md-4 col-sm-6 col-xs-12 image-card" ng-repeat="item in imageData">
                 <div class="content">
+                    <div class="image-title">
+                        <p>"{{item.description | cut:true:30:' ...'}}"</p>
+                    </div>
                     <div class="image-wrapper">
                         <img ng-src="{{item.relpath}}" class="image-info">
+                    </div>
+                    <div class="image-provider">
+                        <span class="rating" ng-style="ratingColor(item.business_info.rating)">{{item.business_info.rating}}</span>
+                        <p>
+                            <span class="business">{{item.business_info.name}}</span>
+                            <br>
+                            {{item.business_info.location.display_name[0]}}
+                            <br>
+                            {{item.business_info.location.display_name[1]}}
+                            <br>
+                            {{item.business_info.location.display_name[2]}}
+                            <span class="pull-right distance"><i class="fa fa-map-marker"></i> {{getDistance(lat, lng, item.business_info.location.details.coordinates[1], item.business_info.location.details.coordinates[0])}}km</span>
+                        </p>
                     </div>
                 </div>
             </div>

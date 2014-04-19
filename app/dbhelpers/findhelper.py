@@ -13,6 +13,17 @@ def _raw_string(s):
 def find_one_image(db):
     return db.images.find_one()
 
+def find_test(db):
+    return [db.images.find_one({'image_id': 13000}),
+            db.images.find_one({'image_id': 8291}),
+            db.images.find_one({'image_id': 200}),
+            db.images.find_one({'image_id': 593}),
+            db.images.find_one({'image_id': 14000}),
+            db.images.find_one({'image_id': 15131}),
+            db.images.find_one({'image_id': 6718}),
+            db.images.find_one({'image_id': 2437}),
+            db.images.find_one({'image_id': 9000})]
+
 def find_all_images(db, mylimit=20):
     return db.images.find().limit(mylimit)
 

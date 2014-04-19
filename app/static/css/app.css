@@ -241,9 +241,6 @@ body .x-ng-cloak {
   padding: 0;
   text-shadow: none;
   width: auto;
-  -moz-border-radius: 40px;
-  -webkit-border-radius: 40px;
-  border-radius: 40px;
 }
 .image-container .image-card .content .image-provider p {
   overflow: hidden;

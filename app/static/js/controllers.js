@@ -28,12 +28,6 @@ angular.module('foodAdvisor.controllers', []).
       cfpLoadingBar.complete();
     };
 
-    //Function for trigger angular ui-tooltip.
-    $scope.isLonger = function(descrition) {
-      // return description.length > 30 ? true : false;
-      console.log(description);
-    }
-
     $scope.getData = function() {
       $http({method: 'GET', url: '/test'}).
       success(function(data, status, headers, config) {

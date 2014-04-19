@@ -10,10 +10,14 @@ angular.module('foodAdvisor.controllers', []).
     $scope.currentValue = '';
     $scope.imageData = null;
     //Geo location initialization
-    $scope.coords = geolocation.getLocation().then(function(data){
-        return {lat: data.coords.latitude,
-                long: data.coords.longitude};
-    });
+    $scope.getCurrentLocation = function() {
+      geolocation.getLocation().then(function(data){
+        console.log({lat: data.coords.latitude,
+                long: data.coords.longitude});
+        $scope.getData();
+      });
+    }
+
     $scope.submitText = function() {
       console.log($scope.keywords);
     };

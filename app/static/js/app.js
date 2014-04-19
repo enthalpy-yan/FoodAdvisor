@@ -5,6 +5,7 @@ angular.module('foodAdvisor', [
   'foodAdvisor.controllers',
   'foodAdvisor.services',
   'foodAdvisor.directives',
+  'foodAdvisor.filters',
 
    //3rd party dependencies
   'ngResource',

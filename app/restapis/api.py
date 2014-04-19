@@ -11,7 +11,7 @@ from flask.ext.restful import Api, Resource, reqparse
 
 @app.route('/test')
 def test():
-    images = findhelper.find_all_images(mongo.db)
+    images = findhelper.find_test(mongo.db)
     return Response(
         json_util.dumps(images),
         mimetype='application/json'

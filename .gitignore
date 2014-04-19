@@ -7,3 +7,4 @@ db_repository
 flask
 node_modules
 app/static/images/foods
+app/outputs/tfidf.txt

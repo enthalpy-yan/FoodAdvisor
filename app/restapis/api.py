@@ -51,6 +51,7 @@ class UpLoad(Resource):
         super(UpLoad, self).__init__()
 
     def post(self):
+        args = self.reqparse.parse_args()
         file = request.files['imgfile']
         if file and upload.allowed_file(file.filename):
             # filename = secure_filename(file.filename)

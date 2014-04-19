@@ -1,4 +1,6 @@
 from app import app
+import os
+import uuid
 
 # Check if the file is one of the allowed types/extensions
 def allowed_file(filename):

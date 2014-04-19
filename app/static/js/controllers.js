@@ -21,18 +21,15 @@ angular.module('foodAdvisor.controllers', []).
     }
 
     $scope.submitText = function() {
-      console.log($scope.keywords);
     };
 
     $scope.receiveFromPost = function(data, status) {
       cfpLoadingBar.complete();
-      console.log(data);
     };
 
     $scope.getData = function() {
       $http({method: 'GET', url: '/test'}).
       success(function(data, status, headers, config) {
-          console.log(data)
           $scope.imageData = data
       }).
       error(function(data, status, headers, config) {
@@ -56,10 +53,6 @@ angular.module('foodAdvisor.controllers', []).
 
     $scope.getDistance = function(lat1, lon1, lat2, lon2) {
       //Radius of the earth in:  1.609344 miles,  6371 km  | var R = (6371 / 1.609344);
-      console.log(lat1);
-      console.log(lon1);
-      console.log(lat2);
-      console.log(lon2);
       var R = 3958.7558657440545; // Radius of earth in Miles
       var dLat = toRad(lat2-lat1);
       var dLon = toRad(lon2-lon1);

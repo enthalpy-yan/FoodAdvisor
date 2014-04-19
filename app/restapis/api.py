@@ -52,7 +52,7 @@ class UpLoad(Resource):
 
     def post(self):
         args = self.reqparse.parse_args()
-        file = request.files['imgfile']
+        file = request.files['uploadFile']
         if file and upload.allowed_file(file.filename):
             # filename = secure_filename(file.filename)
 
@@ -70,7 +70,7 @@ class UpLoad(Resource):
                 'result': businessinfo,
                 'status': { 'text': text, 'file': abspath }
             }
-            
+
             return Response(
                 json_util.dumps(res),
                 mimetype='application/json'

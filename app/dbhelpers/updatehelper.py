@@ -6,7 +6,6 @@ def update_collection(db_name, collection_name):
     db = client[db_name]
     collection = db[collection_name]
     cursor = collection.find()
-    arr = []
     for item in cursor:
         image_id = item['_id']
         description = item['description'].split()

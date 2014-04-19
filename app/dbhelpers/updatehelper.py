@@ -24,3 +24,15 @@ def update_collection(db_name, collection_name):
             {'$set': {'description_search': description}},
             upsert=False
         )
+
+def create_indexes(db_name, collection_name):
+    """
+    Create full text indexes with name and description fields
+    """
+    client = MongoClient('localhost', 27017)
+    db = client[db_name]
+    collection = db[collection_name]
+    collection.create_index([
+        ('description', 'text'),
+        ('business_info.name', 'text')
+    ])

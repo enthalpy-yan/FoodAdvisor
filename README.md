@@ -60,10 +60,13 @@ Style: [Bootstrap](http://getbootstrap.com/), [LESS](http://lesscss.org/), [Font
     $ which python
     /Users/hanyan/Desktop/Homework/CS598/FoodAdvisor/flask/bin/python
     ```
+    
   5. Run the service(under the root directory), the server should be running without any issues.
+
     `$ python run.py`
   
   6. After setting virtual environment manually, you also need to install nltk stopwords libirary by your self.
+    
     `$ python -m nltk.downloader stopwords`
 
 ####To Do List

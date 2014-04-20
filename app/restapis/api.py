@@ -86,7 +86,7 @@ class UpLoad(Resource):
         if query and abspath is None:
             if args['sortbyrating']:
                 querylist = findhelper.sort_text_by_rating(mongo.db, query, offset)
-            elif args['sortbynamge']:
+            elif args['sortbyname']:
                 querylist = findhelper.sort_text_by_name(mongo.db, query, offset)
             else:
                 querylist = findhelper.find_image_by_text(mongo.db, query, offset)

@@ -62,6 +62,29 @@ body .x-ng-cloak {
   width: 0;
   height: 0;
 }
+.dropdown-menu {
+  background: #f8f8f8 !important;
+  box-shadow: none !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  margin-top: 15px !important;
+  width: 178px !important;
+  color: #777777;
+}
+.dropdown-menu > li > a {
+  line-height: 47px;
+  color: #777777;
+  height: 50px;
+  font-weight: 100;
+}
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus {
+  height: 50px;
+  background-color: #bdc3c7;
+  background-image: none;
+  filter: none;
+  color: #777777;
+}
 .my-navbar {
   padding: 15px 0 8px 0px;
   -webkit-box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.05);
@@ -103,6 +126,19 @@ body .x-ng-cloak {
   height: 100px;
   width: 100%;
   background-color: #f0f0f0;
+}
+.search-bar-container .sorting-menu {
+  height: 50px;
+  width: 50px;
+  font-size: 30px;
+  color: #777777;
+  background-color: #f8f8f8;
+  -webkit-box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.05);
+}
+.search-bar-container .sorting-menu .menu-button {
+  margin-left: 13px;
+  line-height: 51px;
 }
 .search-bar-container .search-bar {
   background-color: #f8f8f8;

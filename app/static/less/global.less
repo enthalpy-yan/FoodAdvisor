@@ -1,6 +1,7 @@
 @app-bg: #f0f0f0;
 @component-bg: #f8f8f8;
 @border-top-bg: #2980b9;
+@myfont-color: #777777;
 @business-name: #3699db;
 
 body {
@@ -70,6 +71,31 @@ body {
     position:absolute;
     width:0;
     height:0
+}
+
+.dropdown-menu {
+    background: #f8f8f8 !important;
+    box-shadow: none !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    margin-top: 15px !important;
+    width: 178px !important;
+    color: @myfont-color;
+}
+
+.dropdown-menu > li > a{
+    line-height: 47px;
+    color: @myfont-color;
+    height: 50px;
+    font-weight: 100;
+}
+
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+  height: 50px;
+  background-color: #bdc3c7;
+  background-image: none;
+  filter: none;
+  color: @myfont-color;
 }
 
 .my-navbar {

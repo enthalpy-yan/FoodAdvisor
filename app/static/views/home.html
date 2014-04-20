@@ -1,63 +1,47 @@
 <div sticky-nav class="search-bar-container">
-    <div class="col-md-2">
-    </div>
-    <div class="search-bar col-md-8">
-        <div class="col-md-7 col-sm-7 col-xs-7">
-            <angucomplete id="ex1"
-             placeholder="Search foods, restaurants, etc"
-             pause="400"
-             url="api/foodtexts/search?term="
-             selectedobject="keywords"
-             datafield="results"
-             titlefield="suggestion"
-             minlength="1"
-             inputclass="my-form-control my-input-bar"
-             ng-enter="submitText()"
-             ng-model="currentValue"/>
+    <div class="container">
+        <div class="col-md-2 col-sm-2 col-xs-2">
+            <div class="sorting-menu pull-right">
+                <div class="dropdown">
+                <i class="fa fa-bars menu-button dropdown-toggle">
+                </i>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a role="menuitem"><i class="fa fa-sort-alpha-asc"></i> &nbsp;&nbsp;&nbsp;Alphabetical Order</a></li>
+                    <li><a role="menuitem"><i class="fa fa-sort-alpha-desc"></i> &nbsp;&nbsp;&nbsp;Alphabetical Order</a></li>
+                    <li><a role="menuitem"><i class="fa fa-sort-amount-desc"></i> &nbsp;&nbsp;&nbsp;Sort by Rating</a></li>
+                    <li><a role="menuitem"><i class="fa fa-sort-amount-asc"></i> &nbsp;&nbsp;&nbsp;Sort by Location</a></li>
+                </ul>
+                </div>
+            </div>
         </div>
-        <div class="pull-right search-button">
-            <upload-button
-                action="api/foodimages/search"
-                complete="receiveFromPost($data, $status)">
-                <i class="fa fa-picture-o fa-lg search-icon"></i>
-            </upload-button>
+        <div class="search-bar col-md-9 col-sm-9 col-xs-9">
+            <div class="col-md-7 col-sm-7 col-xs-7">
+                <angucomplete id="ex1"
+                 placeholder="Search foods, restaurants, etc"
+                 pause="400"
+                 url="api/foodtexts/search?term="
+                 selectedobject="keywords"
+                 datafield="results"
+                 titlefield="suggestion"
+                 minlength="1"
+                 inputclass="my-form-control my-input-bar"
+                 ng-enter="submitText()"
+                 ng-model="currentValue"/>
+            </div>
+            <div class="pull-right search-button">
+                <upload-button
+                    action="api/foodimages/search"
+                    complete="receiveFromPost($data, $status)">
+                    <i class="fa fa-picture-o fa-lg search-icon"></i>
+                </upload-button>
+            </div>
         </div>
     </div>
-    <div class="col-md-2"></div>
 </div>
 
 <div holder></div>
 
 <div class="container image-list-container" ng-init="getCurrentLocation()">
-<!--     <div class="row">
-        <div sticky-nav class="search-bar-container" style="background-color:black;">
-            <div class="col-md-2">
-            </div>
-            <div class="search-bar col-md-8">
-                <div class="col-md-7 col-sm-7 col-xs-7">
-                    <angucomplete id="ex1"
-                     placeholder="Search foods, restaurants, etc"
-                     pause="400"
-                     url="api/foodtexts/search?term="
-                     selectedobject="keywords"
-                     datafield="results"
-                     titlefield="suggestion"
-                     minlength="1"
-                     inputclass="my-form-control my-input-bar"
-                     ng-enter="submitText()"
-                     ng-model="currentValue"/>
-                </div>
-                <div class="pull-right search-button">
-                    <upload-button
-                        action="api/foodimages/search"
-                        complete="receiveFromPost($data, $status)">
-                        <i class="fa fa-picture-o fa-lg search-icon"></i>
-                    </upload-button>
-                </div>
-            </div>
-            <div class="col-md-2"></div>
-        </div>
-    </div> -->
     <div class="row">
         <div class="row image-container" ng-init="getData()">
             <div class="col-md-4 col-sm-6 col-xs-12 image-card" ng-repeat="item in imageData track by $index">

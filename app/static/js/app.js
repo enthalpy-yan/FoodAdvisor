@@ -15,7 +15,8 @@ angular.module('foodAdvisor', [
   'ui.date',
   'angucomplete',
   'chieffancypants.loadingBar',
-  'geolocation'
+  'geolocation',
+  'google-maps'
 ]).
 config(function ($routeProvider, $locationProvider) {
   $routeProvider.

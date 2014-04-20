@@ -101,39 +101,55 @@ angular.module('foodAdvisor.controllers', [])
 
       $scope.items = ['item1', 'item2', 'item3'];
 
-  $scope.open = function () {
-
-    var modalInstance = $modal.open({
-      templateUrl: 'views/mapmodal.html',
-      controller: 'ModalInstanceCtrl',
-      resolve: {
-        items: function () {
-          return $scope.items;
+    $scope.open = function (index) {
+      var modalInstance = $modal.open({
+        templateUrl: 'views/mapmodal.html',
+        controller: 'ModalInstanceCtrl',
+        resolve: {
+          location: function () {
+            return [$scope.imageData[index].business_info.location.details.coordinates[1],
+                    $scope.imageData[index].business_info.location.details.coordinates[1]];
+          }
         }
-      }
-    });
+      });
 
-    modalInstance.result.then(function (selectedItem) {
-      $scope.selected = selectedItem;
-    }, function () {
-      $log.info('Modal dismissed at: ' + new Date());
-    });
-  };
-
-  })
-  .controller('ModalInstanceCtrl', function ($scope, $modalInstance, items) {
-
-    $scope.items = items;
-    $scope.selected = {
-      item: $scope.items[0]
+      modalInstance.result.then(function (selectedItem) {
+        $scope.selected = selectedItem;
+      }, function () {
+        $log.info('Modal dismissed at: ' + new Date());
+      });
     };
+  })
+  .controller('ModalInstanceCtrl', function ($scope, $modalInstance, location) {
+
+    $scope.$watch('loc', function(e, d) {
+      console.log('View enter', e, d, $scope);
+      var mapEl = angular.element(document.querySelector('.angular-google-map'));
+      var iScope = mapEl.isolateScope();
+      var map = iScope.map;
+      console.log(map);
+      google.maps.event.trigger(map, 'resize');
+      map.setCenter(new google.maps.LatLng(42.3605336, -72.6362989));
+    });
+
+    $scope.loc = location;
+
+    $scope.getLocation = $scope.loc;
 
     $scope.ok = function () {
-      $modalInstance.close($scope.selected.item);
+      $modalInstance.close();
     };
 
     $scope.cancel = function () {
       $modalInstance.dismiss('cancel');
+    };
+
+    $scope.map = {
+        center: {
+            latitude: 45,
+            longitude: -73
+        },
+        zoom: 8
     };
   });
 

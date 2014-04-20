@@ -44,11 +44,13 @@ Style: [Bootstrap](http://getbootstrap.com/), [LESS](http://lesscss.org/), [Font
 ###Configuration
 ####Environment
 
-  1. Under the root directory, install all dependencies.
+  1. Install Python, MongoDB, OpenCV-Python.
+
+  2. Under the root directory, install python dependencies.
 
     `$ ./installtolocal.sh`
 
-  2. Run the service(under the root directory), the server should be running without any issues.
+  3. Run the service(under the root directory), the server should be running without any issues.
 
     `$ python run.py`
   

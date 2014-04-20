@@ -33,14 +33,14 @@ def find_all_images(db, mylimit=20):
 def find_image_by_aggregation(db, pipeline):
     return db.images.aggregate(pipeline)['result']
 
-def find_image_by_id(db, image_ids):
+def find_image_by_id(db, image_ids, offset):
     pipeline = [{'$match': {'image_id': {'$in': image_ids}}},
-                {'$limit': 20}]
+                {'$limit': offset}]
     return find_image_by_aggregation(db, pipeline)
 
-def find_image_by_text(db, keywords):
+def find_image_by_text(db, keywords, offset):
     pipeline = [{'$match': {'$text': {'$search': keywords}}},
-                {'$limit': 50}]
+                {'$limit': offset}]
     return find_image_by_aggregation(db, pipeline)
 
 def text_suggestion(db, term):
@@ -92,26 +92,26 @@ def text_suggestion(db, term):
     ret = [{'suggestion': s} for s in suggestion]
     return {'results': ret[:15]}
 
-def sort_text_by_rating(db, keywords):
+def sort_text_by_rating(db, keywords, offset):
     pipeline = [{'$match': {'$text': {'$search': keywords}}},
                 {'$sort': {'business_info.rating': -1}},
-                {'$limit': 50}]
+                {'$limit': offset}]
     return find_image_by_aggregation(db, pipeline)
 
-def sort_text_by_name(db, keywords):
+def sort_text_by_name(db, keywords, offset):
     pipeline = [{'$match': {'$text': {'$search': keywords}}},
                 {'$sort': {'business_info.name': 1}},
-                {'$limit': 50}]
+                {'$limit': offset}]
     return find_image_by_aggregation(db, pipeline)
 
-def sort_image_by_rating(db, image_ids):
+def sort_image_by_rating(db, image_ids, offset):
     pipeline = [{'$match': {'image_id': {'$in': image_ids}}},
                 {'$sort': {'business_info.rating': -1}},
-                {'$limit': 50}]
+                {'$limit': offset}]
     return find_image_by_aggregation(db, pipeline)
 
-def sort_image_by_name(db, image_ids):
+def sort_image_by_name(db, image_ids, offset):
     pipeline = [{'$match': {'image_id': {'$in': image_ids}}},
                 {'$sort': {'business_info.name': 1}},
-                {'$limit': 50}]
+                {'$limit': offset}]
     return find_image_by_aggregation(db, pipeline)

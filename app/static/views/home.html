@@ -2,7 +2,7 @@
     <div class="container">
         <div class="col-md-2 col-sm-2 col-xs-2">
             <div class="sorting-menu pull-right">
-                <div class="dropdown" ng-click="submitText()">
+                <div class="dropdown">
                     <i class="fa fa-bars menu-button dropdown-toggle">
                     </i>
                     <ul class="dropdown-menu" role="menu">
@@ -20,12 +20,12 @@
                  placeholder="Search foods, restaurants, etc"
                  pause="400"
                  url="api/foodtexts/search?term="
-                 selectedobject="keywords"
+                 selectedobject="queryString"
                  datafield="results"
                  titlefield="suggestion"
                  minlength="1"
                  inputclass="my-form-control my-input-bar"
-                 ng-enter="submitText()"
+                 ng-enter="submitText(queryString)"
                  ng-model="currentValue"/>
             </div>
             <div class="pull-right search-button">
@@ -43,7 +43,7 @@
 
 <div class="container image-list-container" ng-init="getCurrentLocation()">
     <div class="row">
-        <div class="row image-container" ng-init="getData()">
+        <div class="row image-container" ng-init="submitText({'title': 'hoboken'})">
             <div class="col-md-4 col-sm-6 col-xs-12 image-card" ng-repeat="item in imageData track by $index">
                 <div class="content">
                     <div class="image-title">

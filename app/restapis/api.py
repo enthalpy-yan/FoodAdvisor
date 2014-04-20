@@ -12,9 +12,15 @@ from flask.ext.restful import Api, Resource, reqparse
 
 @app.route('/test')
 def test():
-    images = findhelper.find_test(mongo.db)
+    result_list = findhelper.find_test(mongo.db)
+
+    res = {
+        'result': result_list,
+        'status': {'text': None, 'file': None}
+    }
+
     return Response(
-        json_util.dumps(images),
+        json_util.dumps(res),
         mimetype='application/json'
     )
 
@@ -41,7 +47,7 @@ class UpLoad(Resource):
     def __init__(self):
         self.reqparse = reqparse.RequestParser()
         self.reqparse.add_argument('file', type=str)
-        self.reqparse.add_argument('offset', type=str)
+        self.reqparse.add_argument('offset', type=int)
         self.reqparse.add_argument('query', type=str)
         self.reqparse.add_argument('sortbyrating', type=str)
         self.reqparse.add_argument('sortbyname', type=str)
@@ -81,30 +87,36 @@ class UpLoad(Resource):
         args = self.reqparse.parse_args()
         abspath = args['file']
         query = args['query']
-        offset = args['offset']
+        offset = args['offset'];
 
-        if query and abspath is None:
-            if args['sortbyrating']:
-                querylist = findhelper.sort_text_by_rating(mongo.db, query, offset)
-            elif args['sortbyname']:
-                querylist = findhelper.sort_text_by_name(mongo.db, query, offset)
-            else:
-                querylist = findhelper.find_image_by_text(mongo.db, query, offset)
+        if offset:
+            result_list = findhelper.find_image_by_text(mongo.db,
+                                                        query, offset)
+        else:
+            result_list = findhelper.find_image_by_text(mongo.db, query)
 
-        elif abspath and query is None:
-            
-            imagesrst = imagesearch.search_image(abspath,
-                                     current_app.codebook,
-                                     current_app.tfidf)
-            if args['sortbyrating']:
-                querylist = findhelper.sort_image_by_rating(mongo.db, imagesrst, offset)
-            elif args['sortbyname']:
-                querylist = findhelper.sort_image_by_name(mongo.db, imagesrst, offset)
-            else:
-                querylist = findhelper.find_image_by_id(mongo.db, imagesrst, offset)
+        # if query and abspath is None:
+        #     if args['sortbyrating']:
+        #         result_list = findhelper.sort_text_by_rating(mongo.db, query, offset)
+        #     elif args['sortbyname']:
+        #         result_list = findhelper.sort_text_by_name(mongo.db, query, offset)
+        #     else:
+        #         result_list = findhelper.find_image_by_text(mongo.db, query, offset)
+
+        # elif abspath and query is None:
+
+        #     imagesrst = imagesearch.search_image(abspath,
+        #                              current_app.codebook,
+        #                              current_app.tfidf)
+        #     if args['sortbyrating']:
+        #         result_list = findhelper.sort_image_by_rating(mongo.db, imagesrst, offset)
+        #     elif args['sortbyname']:
+        #         result_list = findhelper.sort_image_by_name(mongo.db, imagesrst, offset)
+        #     else:
+        #         result_list = findhelper.find_image_by_id(mongo.db, imagesrst, offset)
 
         res = {
-            'result': querylist,
+            'result': result_list,
             'status': { 'text': query, 'file': abspath }
         }
 

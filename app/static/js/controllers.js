@@ -4,13 +4,16 @@
 
 angular.module('foodAdvisor.controllers', [])
   .controller('SearchController',
-             function ($scope, $http, $modal, $log, cfpLoadingBar, geolocation) {
+             function ($scope, $http, $location, cfpLoadingBar, geolocation) {
     $scope.currentValue = '';
-    $scope.imageData = [];
+    $scope.imageData = null;
+    $scope.originalData = null;
     $scope.distance = 0;
     $scope.lat = 0;
     $scope.lng = 0;
-    $scope.newData = null;
+    $scope.queryString = null;
+    $scope.offset = 24;
+
     //Geo location initialization
     $scope.getCurrentLocation = function() {
       geolocation.getLocation().then(function(data){
@@ -19,8 +22,31 @@ angular.module('foodAdvisor.controllers', [])
       });
     }
 
-    $scope.submitText = function() {
+    $scope.submitText = function(query) {
+      $scope.offset = 24;
+      if (query == null)
+        return;
+      $http({method: 'GET', url: 'api/foodimages/search?query=' + query['title']}).
+        success(function(data, status, headers, config) {
+          $scope.originalData = data;
+          $scope.imageData = $scope.originalData['result'];
+        }).
+        error(function(data, status, headers, config) {
+      });
     };
+
+    $scope.$watch('queryString', function(value) {
+      if (value != null) {
+        $scope.offset = 24;
+        $http({method: 'GET', url: 'api/foodimages/search?query=' + value['title']}).
+          success(function(data, status, headers, config) {
+            $scope.originalData = data;
+            $scope.imageData = $scope.originalData['result'];
+          }).
+          error(function(data, status, headers, config) {
+        });
+      }
+    });
 
     $scope.clickSort = function(sortMethod) {
       switch(sortMethod) {
@@ -52,17 +78,37 @@ angular.module('foodAdvisor.controllers', [])
     //Callback function for receive data after post file to server.
     $scope.receiveFromPost = function(data, status) {
       cfpLoadingBar.complete();
-      $scope.imageData = JSON.parse(data);
+      $scope.originalData = data;
+      $scope.imageData = $scope.originalData['result'];
     };
 
     $scope.getData = function() {
       $http({method: 'GET', url: '/test'}).
       success(function(data, status, headers, config) {
-        $scope.imageData = data;
+        $scope.originalData = data;
+        $scope.imageData = $scope.originalData['result'];
       }).
       error(function(data, status, headers, config) {
       });
     };
+
+    $scope.nextPage = function() {
+      if ($scope.originalData.status.file != null)
+        return;
+      else {
+        $http({method: 'GET',
+              url: 'api/foodimages/search?query=' +
+                    $scope.originalData.status.text +
+                    '&offset=' + $scope.offset})
+          .success(function(data, status, headers, config) {
+            $scope.originalData = data;
+            $scope.imageData = $scope.originalData['result'];
+            $scope.offset += 12
+          }).
+          error(function(data, status, headers, config) {
+        });
+      }
+    }
 
     //Function for set rating color with the given rating score.
     $scope.ratingColor = function(rating) {
@@ -102,47 +148,16 @@ angular.module('foodAdvisor.controllers', [])
       $scope.items = ['item1', 'item2', 'item3'];
 
     $scope.open = function (index) {
-      var modalInstance = $modal.open({
-        templateUrl: 'views/mapmodal.html',
-        controller: 'ModalInstanceCtrl',
-        resolve: {
-          location: function () {
-            return [$scope.imageData[index].business_info.location.details.coordinates[1],
-                    $scope.imageData[index].business_info.location.details.coordinates[1]];
-          }
-        }
-      });
-
-      modalInstance.result.then(function (selectedItem) {
-        $scope.selected = selectedItem;
-      }, function () {
-        $log.info('Modal dismissed at: ' + new Date());
-      });
+      $location.path("/business");
     };
   })
-  .controller('ModalInstanceCtrl', function ($scope, $modalInstance, location) {
-
-    $scope.$watch('loc', function(e, d) {
-      console.log('View enter', e, d, $scope);
+  .controller('ModalInstanceCtrl', function ($scope) {
+    $scope.$on('viewState.viewEnter', function(e, d) {
       var mapEl = angular.element(document.querySelector('.angular-google-map'));
       var iScope = mapEl.isolateScope();
       var map = iScope.map;
-      console.log(map);
-      google.maps.event.trigger(map, 'resize');
-      map.setCenter(new google.maps.LatLng(42.3605336, -72.6362989));
+      google.maps.event.trigger(map, "resize");
     });
-
-    $scope.loc = location;
-
-    $scope.getLocation = $scope.loc;
-
-    $scope.ok = function () {
-      $modalInstance.close();
-    };
-
-    $scope.cancel = function () {
-      $modalInstance.dismiss('cancel');
-    };
 
     $scope.map = {
         center: {

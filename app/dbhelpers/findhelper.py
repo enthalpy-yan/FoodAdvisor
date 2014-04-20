@@ -33,12 +33,12 @@ def find_all_images(db, mylimit=20):
 def find_image_by_aggregation(db, pipeline):
     return db.images.aggregate(pipeline)['result']
 
-def find_image_by_id(db, image_ids, offset):
+def find_image_by_id(db, image_ids, offset=12):
     pipeline = [{'$match': {'image_id': {'$in': image_ids}}},
                 {'$limit': offset}]
     return find_image_by_aggregation(db, pipeline)
 
-def find_image_by_text(db, keywords, offset):
+def find_image_by_text(db, keywords, offset=12):
     pipeline = [{'$match': {'$text': {'$search': keywords}}},
                 {'$limit': offset}]
     return find_image_by_aggregation(db, pipeline)

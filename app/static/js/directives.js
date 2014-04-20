@@ -40,6 +40,40 @@ angular.module('foodAdvisor.directives', [])
         }
       });
     };
+  }])
+  .directive('stickyNav', ['$window', function ($window) {
+    return function(scope, element, attrs) {
+      var windowEl = angular.element($window);
+      windowEl.bind('scroll', function() {
+        if (this.pageYOffset > 100) {
+          element.addClass('fixed-search-bar');
+        } else {
+          element.removeClass('fixed-search-bar');
+        }
+      });
+    };
+  }])
+  .directive('holder', ['$window', function ($window) {
+    return function(scope, element, attrs) {
+      var windowEl = angular.element($window);
+      windowEl.bind('scroll', function() {
+        if (this.pageYOffset > 100) {
+          element.addClass('holder-bar');
+        } else {
+          element.removeClass('holder-bar');
+        }
+      });
+    };
+  }])
+  .directive('fadey', [function() {
+    return {
+        restrict: 'A',
+        link: function(scope, elm, attrs) {
+          jQuery(elm)
+            .css({ opacity: 0 })
+            .animate({ opacity: 1 }, parseInt(attrs.fadey));
+        }
+    };
   }]);
 
 // directive template

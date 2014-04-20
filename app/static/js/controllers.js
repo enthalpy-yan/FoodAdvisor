@@ -5,7 +5,7 @@
 angular.module('foodAdvisor.controllers', []).
   controller('AppCtrl', function ($scope) {
   }).
-  controller('searchBarController',
+  controller('searchController',
              function ($scope, $http, cfpLoadingBar, geolocation) {
     $scope.currentValue = '';
     $scope.imageData = null;

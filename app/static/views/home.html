@@ -1,6 +1,36 @@
-<div class="container" ng-controller="searchBarController" ng-init="getCurrentLocation()">
-    <div class="row">
-        <div class="search-bar-container">
+<div sticky-nav class="search-bar-container">
+    <div class="col-md-2">
+    </div>
+    <div class="search-bar col-md-8">
+        <div class="col-md-7 col-sm-7 col-xs-7">
+            <angucomplete id="ex1"
+             placeholder="Search foods, restaurants, etc"
+             pause="400"
+             url="api/foodtexts/search?term="
+             selectedobject="keywords"
+             datafield="results"
+             titlefield="suggestion"
+             minlength="1"
+             inputclass="my-form-control my-input-bar"
+             ng-enter="submitText()"
+             ng-model="currentValue"/>
+        </div>
+        <div class="pull-right search-button">
+            <upload-button
+                action="api/foodimages/search"
+                complete="receiveFromPost($data, $status)">
+                <i class="fa fa-picture-o fa-lg search-icon"></i>
+            </upload-button>
+        </div>
+    </div>
+    <div class="col-md-2"></div>
+</div>
+
+<div holder></div>
+
+<div class="container image-list-container" ng-init="getCurrentLocation()">
+<!--     <div class="row">
+        <div sticky-nav class="search-bar-container" style="background-color:black;">
             <div class="col-md-2">
             </div>
             <div class="search-bar col-md-8">
@@ -27,7 +57,7 @@
             </div>
             <div class="col-md-2"></div>
         </div>
-    </div>
+    </div> -->
     <div class="row">
         <div class="row image-container" ng-init="getData()">
             <div class="col-md-4 col-sm-6 col-xs-12 image-card" ng-repeat="item in imageData track by $index">
@@ -64,3 +94,4 @@
     </div>
     </div>
 </div>
+

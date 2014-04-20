@@ -2,10 +2,8 @@
 
 /* Controllers */
 
-angular.module('foodAdvisor.controllers', []).
-  controller('AppCtrl', function ($scope) {
-  }).
-  controller('searchController',
+angular.module('foodAdvisor.controllers', [])
+  .controller('searchController',
              function ($scope, $http, cfpLoadingBar, geolocation) {
     $scope.currentValue = '';
     $scope.imageData = null;
@@ -22,6 +20,33 @@ angular.module('foodAdvisor.controllers', []).
     }
 
     $scope.submitText = function() {
+    };
+
+    $scope.clickSort = function(sortMethod) {
+      switch(sortMethod) {
+        case 0:
+          $scope.imageData =
+            _.sortBy($scope.imageData,
+                     function(data) {return data['description']});
+          break;
+        case 1:
+          var sorted =
+            _.sortBy($scope.imageData,
+                     function(data) {return data['description']});
+          $scope.imageData = sorted.reverse();
+          break;
+        case 2:
+          var sorted =
+            _.sortBy($scope.imageData,
+                     function(data) {return data['business_info']['rating']});
+          $scope.imageData = sorted.reverse();
+          break;
+        case 3:
+          $scope.imageData =
+            _.sortBy($scope.imageData,
+                     function(data) {return data['dist']});
+          break;
+      }
     };
 
     //Callback function for receive data after post file to server.
@@ -56,7 +81,7 @@ angular.module('foodAdvisor.controllers', []).
     };
 
     //Function for calculate distance between two Geo location.
-    $scope.getDistance = function(lat1, lon1, lat2, lon2) {
+    $scope.getDistance = function(index, lat1, lon1, lat2, lon2) {
       //Radius of the earth in:  1.609344 miles,  6371 km  | var R = (6371 / 1.609344);
       var R = 3958.7558657440545; // Radius of earth in Miles
       var dLat = toRad(lat2-lat1);
@@ -70,6 +95,7 @@ angular.module('foodAdvisor.controllers', []).
       if (d > 5000) {
         return null;
       }
+      $scope.imageData[index]['dist'] = _.parseInt(d);
       return d.toFixed(2);
     };
   });

@@ -72,6 +72,7 @@ body .x-ng-cloak {
   color: #777777;
 }
 .dropdown-menu > li > a {
+  cursor: pointer;
   line-height: 47px;
   color: #777777;
   height: 50px;
@@ -84,6 +85,11 @@ body .x-ng-cloak {
   background-image: none;
   filter: none;
   color: #777777;
+  cursor: pointer;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
 .my-navbar {
   padding: 15px 0 8px 0px;
@@ -139,6 +145,7 @@ body .x-ng-cloak {
 .search-bar-container .sorting-menu .menu-button {
   margin-left: 13px;
   line-height: 51px;
+  cursor: pointer;
 }
 .search-bar-container .search-bar {
   background-color: #f8f8f8;

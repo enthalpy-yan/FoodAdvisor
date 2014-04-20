@@ -2,15 +2,15 @@
     <div class="container">
         <div class="col-md-2 col-sm-2 col-xs-2">
             <div class="sorting-menu pull-right">
-                <div class="dropdown">
-                <i class="fa fa-bars menu-button dropdown-toggle">
-                </i>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a role="menuitem"><i class="fa fa-sort-alpha-asc"></i> &nbsp;&nbsp;&nbsp;Alphabetical Order</a></li>
-                    <li><a role="menuitem"><i class="fa fa-sort-alpha-desc"></i> &nbsp;&nbsp;&nbsp;Alphabetical Order</a></li>
-                    <li><a role="menuitem"><i class="fa fa-sort-amount-desc"></i> &nbsp;&nbsp;&nbsp;Sort by Rating</a></li>
-                    <li><a role="menuitem"><i class="fa fa-sort-amount-asc"></i> &nbsp;&nbsp;&nbsp;Sort by Location</a></li>
-                </ul>
+                <div class="dropdown" ng-click="submitText()">
+                    <i class="fa fa-bars menu-button dropdown-toggle">
+                    </i>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a role="menuitem" ng-click="clickSort(0)"><i class="fa fa-sort-alpha-asc"></i> &nbsp;&nbsp;&nbsp;Alphabetical Order</a></li>
+                        <li><a role="menuitem" ng-click="clickSort(1)"><i class="fa fa-sort-alpha-desc"></i> &nbsp;&nbsp;&nbsp;Alphabetical Order</a></li>
+                        <li><a role="menuitem" ng-click="clickSort(2)"><i class="fa fa-sort-amount-desc"></i> &nbsp;&nbsp;&nbsp;Sort by Rating</a></li>
+                        <li><a role="menuitem" ng-click="clickSort(3)"><i class="fa fa-sort-amount-asc"></i> &nbsp;&nbsp;&nbsp;Sort by Location</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -64,7 +64,7 @@
                             {{item.business_info.location.display_name[1]}}
                             <br>
                             {{item.business_info.location.display_name[2]}}
-                            <span class="pull-right distance"><i class="fa fa-map-marker"></i> {{getDistance(lat, lng, item.business_info.location.details.coordinates[1], item.business_info.location.details.coordinates[0])}}km</span>
+                            <span class="pull-right distance"><i class="fa fa-map-marker"></i> {{getDistance($index, lat, lng, item.business_info.location.details.coordinates[1], item.business_info.location.details.coordinates[0])}}km</span>
                         </p>
                     </div>
                 </div>

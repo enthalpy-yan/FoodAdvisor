@@ -66,7 +66,7 @@ class UpLoad(Resource):
                                      current_app.codebook,
                                      current_app.tfidf)
 
-            businessinfo = findhelper.find_image_by_id(mongo.db, imagesrst)
+            businessinfo = findhelper.find_image_by_id(mongo.db, imagesrst, 12)
 
             # print businessinfo.__class__
 

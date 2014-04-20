@@ -41,11 +41,8 @@ class UpLoad(Resource):
     def __init__(self):
         self.reqparse = reqparse.RequestParser()
         self.reqparse.add_argument('file', type=str)
-        self.reqparse.add_argument('longitude', type=str)
-        self.reqparse.add_argument('latitude', type=str)
         self.reqparse.add_argument('offset', type=str)
         self.reqparse.add_argument('query', type=str)
-        self.reqparse.add_argument('sortbylocation', type=str)
         self.reqparse.add_argument('sortbyrating', type=str)
         self.reqparse.add_argument('sortbyname', type=str)
         super(UpLoad, self).__init__()
@@ -54,7 +51,6 @@ class UpLoad(Resource):
         args = self.reqparse.parse_args()
         file = request.files['uploadFile']
         if file and upload.allowed_file(file.filename):
-            # filename = secure_filename(file.filename)
 
             filename = upload.generate_new_filename(file)
             savepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
@@ -90,14 +86,16 @@ class UpLoad(Resource):
         if query and abspath is None:
             if args['sortbyrating']:
                 querylist = findhelper.sort_text_by_rating(mongo.db, query, offset)
-            elif args['sortbyname']:
+            elif args['sortbynamge']:
                 querylist = findhelper.sort_text_by_name(mongo.db, query, offset)
             else:
                 querylist = findhelper.find_image_by_text(mongo.db, query, offset)
 
         elif abspath and query is None:
-            # call search_by_image(imagepath) to get images list
-            imagesrst = [4459,214]
+            
+            imagesrst = imagesearch.search_image(abspath,
+                                     current_app.codebook,
+                                     current_app.tfidf)
             if args['sortbyrating']:
                 querylist = findhelper.sort_image_by_rating(mongo.db, imagesrst, offset)
             elif args['sortbyname']:

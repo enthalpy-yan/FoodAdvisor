@@ -3,10 +3,10 @@
 /* Controllers */
 
 angular.module('foodAdvisor.controllers', [])
-  .controller('searchController',
-             function ($scope, $http, cfpLoadingBar, geolocation) {
+  .controller('SearchController',
+             function ($scope, $http, $modal, $log, cfpLoadingBar, geolocation) {
     $scope.currentValue = '';
-    $scope.imageData = null;
+    $scope.imageData = [];
     $scope.distance = 0;
     $scope.lat = 0;
     $scope.lng = 0;
@@ -58,7 +58,7 @@ angular.module('foodAdvisor.controllers', [])
     $scope.getData = function() {
       $http({method: 'GET', url: '/test'}).
       success(function(data, status, headers, config) {
-          $scope.imageData = data
+        $scope.imageData = data;
       }).
       error(function(data, status, headers, config) {
       });
@@ -98,8 +98,46 @@ angular.module('foodAdvisor.controllers', [])
       $scope.imageData[index]['dist'] = _.parseInt(d);
       return d.toFixed(2);
     };
+
+      $scope.items = ['item1', 'item2', 'item3'];
+
+  $scope.open = function () {
+
+    var modalInstance = $modal.open({
+      templateUrl: 'views/mapmodal.html',
+      controller: 'ModalInstanceCtrl',
+      resolve: {
+        items: function () {
+          return $scope.items;
+        }
+      }
+    });
+
+    modalInstance.result.then(function (selectedItem) {
+      $scope.selected = selectedItem;
+    }, function () {
+      $log.info('Modal dismissed at: ' + new Date());
+    });
+  };
+
+  })
+  .controller('ModalInstanceCtrl', function ($scope, $modalInstance, items) {
+
+    $scope.items = items;
+    $scope.selected = {
+      item: $scope.items[0]
+    };
+
+    $scope.ok = function () {
+      $modalInstance.close($scope.selected.item);
+    };
+
+    $scope.cancel = function () {
+      $modalInstance.dismiss('cancel');
+    };
   });
 
+//Helper functions
 function toRad(Value) {
     /** Converts numeric degrees to radians */
     return Value * Math.PI / 180;

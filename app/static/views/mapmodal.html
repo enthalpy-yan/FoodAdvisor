@@ -1,0 +1,16 @@
+<div class="modal-header">
+    <h3>Map Title</h3>
+</div>
+<div class="modal-body">
+    <h3>Map Body</h3>
+    <ul>
+        <li ng-repeat="item in items">
+            <a ng-click="selected.item = item">{{ item }}</a>
+        </li>
+    </ul>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="ok()">OK</button>
+    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+</div>
+

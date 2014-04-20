@@ -21,7 +21,7 @@ config(function ($routeProvider, $locationProvider) {
   $routeProvider.
     when('/', {
       templateUrl: 'views/home.html',
-      controller: 'searchController'
+      controller: 'SearchController'
     }).
     when('/how', {
       templateUrl: 'views/how.html',

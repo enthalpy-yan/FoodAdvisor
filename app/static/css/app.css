@@ -12,6 +12,42 @@ body .ng-cloak,
 body .x-ng-cloak {
   display: none !important;
 }
+.fadeEffect {
+  -o-transition: .5s;
+  -ms-transition: .5s;
+  -moz-transition: .5s;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+/****Custom bootstrap component styles****/
+.my-navbar {
+  padding: 15px 0 8px 0px;
+  -webkit-box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.05);
+}
+.my-navbar .brand {
+  font-size: 30px;
+}
+.my-navbar .links {
+  font-size: 18px;
+}
+.my-navbar .link-top-border {
+  border-top: 3px solid #f8f8f8;
+}
+.my-navbar .link-top-border:hover,
+.my-navbar :focus {
+  border-top: 3px solid #777777;
+}
+.navbar .nav > li > a {
+  margin-top: 11px;
+  margin-left: 10px;
+  padding-top: 5px;
+  -o-transition: .5s;
+  -ms-transition: .5s;
+  -moz-transition: .5s;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
 .tooltip {
   position: absolute;
   z-index: 1020;
@@ -86,34 +122,12 @@ body .x-ng-cloak {
   filter: none;
   color: #777777;
   cursor: pointer;
-  -webkit-transition: all 0.5s ease-in-out;
-  -moz-transition: all 0.5s ease-in-out;
-  -o-transition: all 0.5s ease-in-out;
-  transition: all 0.5s ease-in-out;
+  -o-transition: .5s;
+  -ms-transition: .5s;
+  -moz-transition: .5s;
+  -webkit-transition: .5s;
+  transition: .5s;
 }
-.modal-content {
-  border-radius: 0px;
-  background-color: #f8f8f8;
-}
-.my-navbar {
-  padding: 15px 0 8px 0px;
-  -webkit-box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.05);
-  box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.05);
-}
-.my-navbar .brand {
-  font-size: 30px;
-}
-.my-navbar .links {
-  font-size: 18px;
-}
-.my-navbar .link-top-border {
-  border-top: 3px solid #f8f8f8;
-}
-.my-navbar .link-top-border:hover,
-.my-navbar :focus {
-  border-top: 3px solid #777777;
-}
-/* This class is added on scroll */
 .fixed-search-bar {
   position: fixed;
   top: 0;
@@ -124,11 +138,6 @@ body .x-ng-cloak {
 .holder-bar {
   width: 100%;
   height: 100px;
-}
-.navbar .nav > li > a {
-  margin-top: 11px;
-  margin-left: 10px;
-  padding-top: 5px;
 }
 .search-bar-container {
   padding-top: 22px;
@@ -185,7 +194,6 @@ body .x-ng-cloak {
   color: #333333;
 }
 .load-more {
-  background-color: #dfdfdf;
   height: 50px;
   margin-top: 10px;
   margin-bottom: 50px;
@@ -200,15 +208,20 @@ body .x-ng-cloak {
   text-transform: uppercase;
   font-size: 1.4em;
   color: rgba(0, 0, 0, 0.3);
+  -o-transition: .5s;
+  -ms-transition: .5s;
+  -moz-transition: .5s;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+.load-more #more:hover {
+  background: #bdc3c7;
 }
 .map-modal {
   background-color: #f8f8f8;
 }
 .angular-google-map-container {
   height: 400px;
-}
-.image-container {
-  height: 900px;
 }
 .image-container .image-card {
   height: 370px;

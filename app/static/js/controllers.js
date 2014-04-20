@@ -78,7 +78,8 @@ angular.module('foodAdvisor.controllers', [])
     //Callback function for receive data after post file to server.
     $scope.receiveFromPost = function(data, status) {
       cfpLoadingBar.complete();
-      $scope.originalData = data;
+      $scope.offset = 24;
+      $scope.originalData = JSON.parse(data);
       $scope.imageData = $scope.originalData['result'];
     };
 
@@ -94,7 +95,18 @@ angular.module('foodAdvisor.controllers', [])
 
     $scope.nextPage = function() {
       if ($scope.originalData.status.file != null)
-        return;
+        $http({method: 'GET',
+              url: 'api/foodimages/search?file=' +
+                    $scope.originalData.status.file +
+                    '&offset=' + $scope.offset})
+          .success(function(data, status, headers, config) {
+            $scope.originalData = data;
+            console.log($scope.originalData);
+            $scope.imageData = $scope.originalData['result'];
+            $scope.offset += 12
+          }).
+          error(function(data, status, headers, config) {
+        });
       else {
         $http({method: 'GET',
               url: 'api/foodimages/search?query=' +

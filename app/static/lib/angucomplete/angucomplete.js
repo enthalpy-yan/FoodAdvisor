@@ -12,6 +12,7 @@ angular.module('angucomplete', [] )
             "id": "@id",
             "placeholder": "@placeholder",
             "selectedObject": "=selectedobject",
+            "searchStrSoFar": "=searchStrSoFar",
             "url": "@url",
             "dataField": "@datafield",
             "titleField": "@titlefield",
@@ -43,6 +44,10 @@ angular.module('angucomplete', [] )
             if ($scope.userPause) {
                 $scope.pause = $scope.userPause;
             }
+
+            $scope.$watch('lastSearchTerm', function(newValue, oldValue) {
+                searchStrSoFar = newValue;
+            });
 
             isNewSearchNeeded = function(newTerm, oldTerm) {
                 return newTerm.length >= $scope.minLength && newTerm != oldTerm

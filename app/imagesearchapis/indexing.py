@@ -13,7 +13,6 @@ def inv_file_index_with_tfidf(vq_txt,tfidf_txt,l,k):
             idf.append(0)
         else:
             idf.append(math.log10( l/sum([1 for p in i if p>0])))     
-    idf = [1 for i in range(k)]
     for i in range(l):
         tf_matrix[i] = tf_matrix[i]*idf    
              

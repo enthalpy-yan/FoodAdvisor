@@ -74,6 +74,26 @@ angular.module('foodAdvisor.directives', [])
             .animate({ opacity: 1 }, parseInt(attrs.fadey));
         }
     };
+  }])
+  .directive('scrollToTop', ['$timeout', function ($timeout) {
+
+    function scrollToTop(speed) {
+      jQuery('body').animate({scrollTop: 0}, speed);
+    }
+
+    function buttonTemplate() {
+      return '<div style="padding: 10px; right: 0; bottom: 0; margin-right: 30px; margin-bottom:100px; position: fixed; color: #777777; text-decoration: none; font-size: 13px; background-color: #f8f8f8;">Go Top</div>'
+    }
+
+    return {
+      restrict: 'E',
+      template: buttonTemplate(),
+      link: function (scope, element, attrs) {
+        element.on('click', function () {
+          scrollToTop(scope.$eval(attrs.speed));
+        });
+      }
+    };
   }]);
 
 // directive template

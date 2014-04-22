@@ -1,5 +1,7 @@
 from app import app
+from flask import send_file
 
-@app.route('/')
-def root():
-    return app.send_static_file('index.html')
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def serveIndex(path):
+    return send_file('static/index.html')

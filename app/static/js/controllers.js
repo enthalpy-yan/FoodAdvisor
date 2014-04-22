@@ -4,7 +4,7 @@
 
 angular.module('foodAdvisor.controllers', [])
   .controller('SearchController',
-             function ($scope, $http, $location, cfpLoadingBar, geolocation) {
+             function ($scope, $http, $location, cfpLoadingBar, geolocation, ImageService) {
     $scope.currentValue = '';
     $scope.imageData = null;
     $scope.originalData = null;
@@ -26,25 +26,25 @@ angular.module('foodAdvisor.controllers', [])
       $scope.offset = 24;
       if (query == null)
         return;
-      $http({method: 'GET', url: 'api/foodimages/search?query=' + query['title']}).
-        success(function(data, status, headers, config) {
+      ImageService.getImages({'query': query['title']})
+        .then(function(data) {
           $scope.originalData = data;
           $scope.imageData = $scope.originalData['result'];
-        }).
-        error(function(data, status, headers, config) {
-      });
+        }, function(error) {
+
+        });
     };
 
     $scope.$watch('queryString', function(value) {
       if (value != null) {
         $scope.offset = 24;
-        $http({method: 'GET', url: 'api/foodimages/search?query=' + value['title']}).
-          success(function(data, status, headers, config) {
+        ImageService.getImages({'query': value['title']})
+          .then(function(data) {
             $scope.originalData = data;
             $scope.imageData = $scope.originalData['result'];
-          }).
-          error(function(data, status, headers, config) {
-        });
+          }, function(error) {
+
+          });
       }
     });
 
@@ -83,42 +83,27 @@ angular.module('foodAdvisor.controllers', [])
       $scope.imageData = $scope.originalData['result'];
     };
 
-    $scope.getData = function() {
-      $http({method: 'GET', url: '/test'}).
-      success(function(data, status, headers, config) {
-        $scope.originalData = data;
-        $scope.imageData = $scope.originalData['result'];
-      }).
-      error(function(data, status, headers, config) {
-      });
-    };
-
     $scope.nextPage = function() {
       if ($scope.originalData.status.file != null)
-        $http({method: 'GET',
-              url: 'api/foodimages/search?file=' +
-                    $scope.originalData.status.file +
-                    '&offset=' + $scope.offset})
-          .success(function(data, status, headers, config) {
+        ImageService.getImages({'file': $scope.originalData.status.file,
+                                'offset': $scope.offset})
+          .then(function(data) {
             $scope.originalData = data;
-            console.log($scope.originalData);
             $scope.imageData = $scope.originalData['result'];
             $scope.offset += 12
-          }).
-          error(function(data, status, headers, config) {
-        });
+          }, function(error) {
+
+          });
       else {
-        $http({method: 'GET',
-              url: 'api/foodimages/search?query=' +
-                    $scope.originalData.status.text +
-                    '&offset=' + $scope.offset})
-          .success(function(data, status, headers, config) {
+        ImageService.getImages({'query': $scope.originalData.status.text,
+                                'offset': $scope.offset})
+          .then(function(data) {
             $scope.originalData = data;
             $scope.imageData = $scope.originalData['result'];
             $scope.offset += 12
-          }).
-          error(function(data, status, headers, config) {
-        });
+          }, function(error) {
+
+          });
       }
     }
 
@@ -140,6 +125,12 @@ angular.module('foodAdvisor.controllers', [])
 
     //Function for calculate distance between two Geo location.
     $scope.getDistance = function(index, lat1, lon1, lat2, lon2) {
+      //Helper functions
+      function toRad(Value) {
+          /** Converts numeric degrees to radians */
+          return Value * Math.PI / 180;
+      }
+
       //Radius of the earth in:  1.609344 miles,  6371 km  | var R = (6371 / 1.609344);
       var R = 3958.7558657440545; // Radius of earth in Miles
       var dLat = toRad(lat2-lat1);
@@ -179,9 +170,3 @@ angular.module('foodAdvisor.controllers', [])
         zoom: 8
     };
   });
-
-//Helper functions
-function toRad(Value) {
-    /** Converts numeric degrees to radians */
-    return Value * Math.PI / 180;
-}

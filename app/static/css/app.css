@@ -137,12 +137,12 @@ body .x-ng-cloak {
 }
 .holder-bar {
   width: 100%;
-  height: 100px;
+  height: 80px;
 }
 .search-bar-container {
-  padding-top: 22px;
+  padding-top: 12px;
   padding-bottom: 8px;
-  height: 100px;
+  height: 80px;
   width: 100%;
   background-color: #f0f0f0;
 }
@@ -192,6 +192,9 @@ body .x-ng-cloak {
 }
 .search-button:hover {
   color: #333333;
+}
+.image-list-container {
+  padding-top: 16px;
 }
 .load-more {
   height: 50px;

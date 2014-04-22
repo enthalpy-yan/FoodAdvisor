@@ -41,7 +41,7 @@
 <div holder></div>
 
 <div class="container image-list-container" ng-init="getCurrentLocation()">
-    <div class="row">
+    <div class="row container">
         <div class="row image-container" ng-init="submitText({'title': 'hoboken'})">
             <div class="col-md-4 col-sm-6 col-xs-12 image-card" ng-repeat="item in imageData track by $index">
                 <div class="content">
@@ -70,7 +70,7 @@
             </div>
         </div>
     </div>
-    <div class="row">
+    <div class="row container">
         <div class="load-more" ng-show="imageData.length >= 12" ng-click="nextPage()">
             <p id="more">MORE</p>
         </div>

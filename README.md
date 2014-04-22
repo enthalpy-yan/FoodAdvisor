@@ -66,6 +66,10 @@ Style: [Bootstrap](http://getbootstrap.com/), [LESS](http://lesscss.org/), [Font
     $ cd app/dbhelpers
     $ python preparedata.py
     ```
+  
+  - Put image files into app/static/images/
+  
+  - Put tfidf file into app/outputs/
 
 ####To Do List
 

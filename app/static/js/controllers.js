@@ -5,7 +5,7 @@
 angular.module('foodAdvisor.controllers', [])
   .controller('SearchController',
              function ($scope, $http, $location, cfpLoadingBar, geolocation, ImageService) {
-    $scope.currentValue = '';
+
     $scope.imageData = null;
     $scope.originalData = null;
     $scope.distance = 0;
@@ -13,7 +13,8 @@ angular.module('foodAdvisor.controllers', [])
     $scope.lng = 0;
     $scope.queryString = null;
     $scope.offset = 24;
-    
+    $scope.resultsByPressEnterInInputBar = null;
+
     //Geo location initialization
     $scope.getCurrentLocation = function() {
       geolocation.getLocation().then(function(data){
@@ -34,6 +35,14 @@ angular.module('foodAdvisor.controllers', [])
 
         });
     };
+
+    $scope.$watch('resultsByPressEnterInInputBar',
+                  function(newValue, oldValue) {
+      if (newValue != null) {
+        $scope.originalData = newValue;
+        $scope.imageData = $scope.originalData['result'];
+      }
+    });
 
     $scope.$watch('queryString', function(value) {
       if (value != null) {

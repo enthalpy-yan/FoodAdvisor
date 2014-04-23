@@ -12,7 +12,6 @@ angular.module('angucomplete', [] )
             "id": "@id",
             "placeholder": "@placeholder",
             "selectedObject": "=selectedobject",
-            "searchStrSoFar": "=searchStrSoFar",
             "url": "@url",
             "dataField": "@datafield",
             "titleField": "@titlefield",
@@ -23,7 +22,8 @@ angular.module('angucomplete', [] )
             "localData": "=localdata",
             "searchFields": "@searchfields",
             "minLengthUser": "@minlength",
-            "matchClass": "@matchclass"
+            "matchClass": "@matchclass",
+            "callBackData": "=callbackdata"
         },
         template: '<div class="angucomplete-holder"><input id="{{id}}_value" ng-model="searchStr" type="text" placeholder="{{placeholder}}" class="{{inputClass}}"/><div id="{{id}}_dropdown" class="angucomplete-dropdown" ng-if="showDropdown"><div class="angucomplete-searching" ng-show="searching">Searching...</div><div class="angucomplete-searching" ng-show="!searching && (!results || results.length == 0)">No results found</div><div class="angucomplete-row" ng-repeat="result in results" ng-click="selectResult(result)" ng-mouseover="hoverRow()" ng-class="{\'angucomplete-selected-row\': $index == currentIndex}"><div ng-if="imageField" class="angucomplete-image-holder"><img ng-if="result.image && result.image != \'\'" ng-src="{{result.image}}" class="angucomplete-image"/><div ng-if="!result.image && result.image != \'\'" class="angucomplete-image-default"></div></div><div class="angucomplete-title" ng-if="matchClass" ng-bind-html="result.title"></div><div class="angucomplete-title" ng-if="!matchClass">{{ result.title }}</div><div ng-if="result.description && result.description != \'\'" class="angucomplete-description">{{result.description}}</div></div></div></div>',
 
@@ -37,6 +37,17 @@ angular.module('angucomplete', [] )
             $scope.minLength = 3;
             $scope.searchStr = null;
 
+            var getData = function(term) {
+                $http({method: 'GET', url: 'api/foodimages/search?query=' + term}).
+                    success(function(data, status, headers, config) {
+                        $scope.callBackData = data;
+                    }).
+                    error(function(data, status, headers, config) {
+                    // called asynchronously if an error occurs
+                    // or server returns response with an error status.
+                    });
+            }
+
             if ($scope.minLengthUser && $scope.minLengthUser != "") {
                 $scope.minLength = $scope.minLengthUser;
             }
@@ -44,10 +55,6 @@ angular.module('angucomplete', [] )
             if ($scope.userPause) {
                 $scope.pause = $scope.userPause;
             }
-
-            $scope.$watch('lastSearchTerm', function(newValue, oldValue) {
-                searchStrSoFar = newValue;
-            });
 
             isNewSearchNeeded = function(newTerm, oldTerm) {
                 return newTerm.length >= $scope.minLength && newTerm != oldTerm
@@ -205,6 +212,8 @@ angular.module('angucomplete', [] )
                     }
 
                 } else if (event.which == 13) {
+                    $scope.showDropdown = false;
+                    getData($scope.lastSearchTerm);
                     if ($scope.currentIndex >= 0 && $scope.currentIndex < $scope.results.length) {
                         $scope.selectResult($scope.results[$scope.currentIndex]);
                         $scope.$apply();

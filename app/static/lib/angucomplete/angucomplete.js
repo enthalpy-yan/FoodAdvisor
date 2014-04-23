@@ -135,7 +135,7 @@ angular.module('angucomplete', [] )
                         $scope.processResults(matches, str);
 
                     } else {
-                        $http.get($scope.url + str, {}).
+                        $http.get($scope.url + str, {ignoreLoadingBar: true}).
                             success(function(responseData, status, headers, config) {
                                 $scope.searching = false;
                                 $scope.processResults(responseData[$scope.dataField], str);

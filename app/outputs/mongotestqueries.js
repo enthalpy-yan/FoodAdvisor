@@ -9,3 +9,9 @@ db.images.aggregate([{$project: {category: '$business_info.category'}},
                      {$sort: {rating: -1}},
                      {$limit: 15}])
 
+db.images.aggregate([{$project: {"des": '$description_search'}},
+                     {$unwind: '$des'},
+                     {$group: {_id: '$des', sum: {$sum: 1}}},
+                     {$match: {_id: {$regex: /^h/}}},
+                     {$sort: {sum: -1}},
+                     {$limit: 15}])

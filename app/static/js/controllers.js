@@ -13,7 +13,7 @@ angular.module('foodAdvisor.controllers', [])
     $scope.lng = 0;
     $scope.queryString = null;
     $scope.offset = 24;
-
+    
     //Geo location initialization
     $scope.getCurrentLocation = function() {
       geolocation.getLocation().then(function(data){

@@ -146,4 +146,40 @@ body {
 }
 //end of dropdown menu
 
+.repeat-animation {
+}
 
+.repeat-animation.ng-enter-stagger,
+.repeat-animation.ng-move-stagger {
+    -webkit-animation-delay:0.1s;
+    animation-delay:0.1s;
+    -webkit-animation-duration:0;
+    animation-duration:0;
+}
+
+.repeat-animation.ng-move,
+.repeat-animation.ng-enter {
+    opacity:0;
+    -webkit-animation:enter_animation 0.2s;
+    animation:enter_animation 0.2s;
+}
+
+@-webkit-keyframes enter_animation {
+    from { opacity:0; }
+    to { opacity:1; }
+}
+
+@keyframes enter_animation {
+    from { opacity:0; }
+    to { opacity:1; }
+}
+
+@-webkit-keyframes leave_animation {
+    from { opacity:1; }
+    to { opacity:0; }
+}
+
+@keyframes leave_animation {
+    from { opacity:1; }
+    to { opacity:0; }
+}

@@ -9,6 +9,7 @@ from app.dbhelpers import findhelper
 from app.imagesearchapis import imagesearch
 from flask.ext.restful import Api, Resource, reqparse
 import itertools
+import random
 
 @app.route('/test')
 def test():
@@ -112,10 +113,21 @@ class UpLoad(Resource):
                 result_list = list(itertools.chain(*result_list))
 
             elif query:
-                result_list = findhelper.find_image_by_text(mongo.db,
+                if query == 'homepage':
+                    imagesrst = current_app.randimages
+                    result_list = findhelper.find_image_by_id(mongo.db, 
+                                                imagesrst, offset)
+                else:
+                    result_list = findhelper.find_image_by_text(mongo.db,
                                              query, offset)
         else:
-            result_list = findhelper.find_image_by_text(mongo.db, query)
+            if query == 'homepage':
+                imagesrst = [int(10000*random.random()) for i in xrange(50)]
+                current_app.randimages = imagesrst
+                result_list = findhelper.find_image_by_id(mongo.db, 
+                                            imagesrst)
+            else:
+                result_list = findhelper.find_image_by_text(mongo.db, query)
 
         res = {
             'result': result_list,

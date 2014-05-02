@@ -1,12 +1,20 @@
 <div class="modal-header">
-    <h3>Map Title</h3>
+    <h4>{{business.business_info.name}}</h4>
+    <p>
+        {{business.business_info.phone}}<br>
+        {{business.business_info.location.display_name[0]}}<br>
+        {{business.business_info.location.display_name[1]}}<br>
+        {{business.business_info.location.display_name[2]}}
+    </p>
 </div>
 <div class="modal-body" style="height: 400px;">
-    <google-map center="map.center" zoom="map.zoom" refresh="true">
-    </google-map>
+    <div ng-if="showMap">
+        <google-map center="map.center" zoom="map.zoom">
+            <marker coords="map.center">
+        </google-map>
+    </div>
 </div>
 <div class="modal-footer">
-    <button class="btn btn-primary" ng-click="ok()">OK</button>
-    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+    <button class="btn btn-primary" ng-click="ok()">Got it!</button>
 </div>
 

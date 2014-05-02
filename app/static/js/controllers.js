@@ -4,7 +4,7 @@
 
 angular.module('foodAdvisor.controllers', [])
   .controller('SearchController',
-             function ($scope, $http, $location, cfpLoadingBar, geolocation, ImageService) {
+             function ($scope, $http, $modal, $log, $location, cfpLoadingBar, geolocation, ImageService) {
 
     $scope.imageData = null;
     $scope.originalData = null;
@@ -160,22 +160,35 @@ angular.module('foodAdvisor.controllers', [])
       $scope.items = ['item1', 'item2', 'item3'];
 
     $scope.open = function (index) {
-      $location.path("/business");
+      var modalInstance = $modal.open({
+        templateUrl: 'views/mapmodal.html',
+        controller: 'ModalInstanceCtrl',
+        resolve: {
+          businessinfo: function () {
+            return $scope.imageData[index];
+          }
+        }
+      });
+
+      modalInstance.opened.then(function(){
+      });
     };
   })
-  .controller('ModalInstanceCtrl', function ($scope) {
-    $scope.$on('viewState.viewEnter', function(e, d) {
-      var mapEl = angular.element(document.querySelector('.angular-google-map'));
-      var iScope = mapEl.isolateScope();
-      var map = iScope.map;
-      google.maps.event.trigger(map, "resize");
-    });
+  .controller('ModalInstanceCtrl',
+              function ($scope, $modalInstance, businessinfo) {
+    $scope.business = businessinfo;
 
     $scope.map = {
         center: {
-            latitude: 45,
-            longitude: -73
+            latitude: businessinfo.business_info.location.details.coordinates[1],
+            longitude: businessinfo.business_info.location.details.coordinates[0]
         },
-        zoom: 8
+        zoom: 15,
+    };
+
+    $scope.showMap = true;
+
+    $scope.ok = function () {
+      $modalInstance.close();
     };
   });

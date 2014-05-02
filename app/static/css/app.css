@@ -1,7 +1,7 @@
 body {
   font-family: "Roboto", sans-serif;
   font-weight: 300;
-  background-color: #f0f0f0;
+  background-color: #e5e5e5;
   -webkit-font-smoothing: subpixel-antialiased;
 }
 body [ng\:cloak],
@@ -128,6 +128,13 @@ body .x-ng-cloak {
   -webkit-transition: .5s;
   transition: .5s;
 }
+.modal-content {
+  border-radius: 0px;
+  background-color: #f8f8f8;
+}
+.btn {
+  border-radius: 0px;
+}
 .repeat-animation.ng-enter-stagger,
 .repeat-animation.ng-move-stagger {
   -webkit-animation-delay: 0.1s;
@@ -189,7 +196,7 @@ body .x-ng-cloak {
   padding-bottom: 8px;
   height: 80px;
   width: 100%;
-  background-color: #f0f0f0;
+  background-color: #e5e5e5;
 }
 .search-bar-container .sorting-menu {
   height: 50px;
@@ -265,8 +272,8 @@ body .x-ng-cloak {
 .load-more #more:hover {
   background: #bdc3c7;
 }
-.map-modal {
-  background-color: #f8f8f8;
+.modal-header {
+  color: #777777;
 }
 .angular-google-map-container {
   height: 400px;

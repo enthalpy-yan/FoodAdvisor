@@ -32,10 +32,6 @@ config(function ($routeProvider, $locationProvider) {
       templateUrl: 'views/about.html',
       controller: 'ModalInstanceCtrl'
     }).
-    when('/business', {
-      templateUrl: 'views/mapmodal.html',
-      controller: 'ModalInstanceCtrl'
-    }).
     otherwise({
       redirectTo: '/'
     });

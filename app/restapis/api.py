@@ -8,7 +8,7 @@ from app.apphelpers import upload
 from app.dbhelpers import findhelper
 from app.imagesearchapis import imagesearch
 from flask.ext.restful import Api, Resource, reqparse
-
+import itertools
 
 @app.route('/test')
 def test():
@@ -67,16 +67,25 @@ class UpLoad(Resource):
             imagesrst = imagesearch.search_image(abspath,
                                      current_app.codebook,
                                      current_app.tfidf)
+            imagesrst = imagesrst[::-1]
+            print imagesrst
+            businessinfo = []
 
-            businessinfo = findhelper.find_image_by_id(mongo.db, imagesrst)
+            for x in xrange(12):
+                img = findhelper.find_image_by_id_new(mongo.db, imagesrst[x])
+                businessinfo.append(img)
 
+            # businessinfo = findhelper.find_image_by_id(mongo.db, imagesrst)
+
+            businessinfo = list(itertools.chain(*businessinfo))
+            print businessinfo.__class__
             res = {
                 'result': businessinfo,
                 'status': { 'text': None, 'file': abspath }
             }
 
             return Response(
-                json_util.dumps(res),
+                json_util.dumps(res, default=json_util.default),
                 mimetype='application/json'
             )
 
@@ -92,8 +101,16 @@ class UpLoad(Resource):
                                             current_app.codebook,
                                             current_app.tfidf)
 
-                result_list = findhelper.find_image_by_id(mongo.db,
-                                             imagesrst, offset)
+                # result_list = findhelper.find_image_by_id(mongo.db,
+                #                              imagesrst, offset)
+                
+                imagesrst = imagesrst[::-1]
+                result_list = []
+                for x in xrange(offset):
+                    img = findhelper.find_image_by_id_new(mongo.db, imagesrst[x])
+                    result_list.append(img)
+                result_list = list(itertools.chain(*result_list))
+
             elif query:
                 result_list = findhelper.find_image_by_text(mongo.db,
                                              query, offset)

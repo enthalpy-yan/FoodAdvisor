@@ -97,3 +97,7 @@ def sort_image_by_name(db, image_ids, offset):
                 {'$sort': {'business_info.name': 1}},
                 {'$limit': offset}]
     return find_image_by_aggregation(db, pipeline)
+
+def find_image_by_id_new(db, image_id):
+    pipeline = [{'$match': {'image_id': image_id}}]
+    return find_image_by_aggregation(db, pipeline)

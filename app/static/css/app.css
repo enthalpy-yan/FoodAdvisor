@@ -272,6 +272,9 @@ body .x-ng-cloak {
 .load-more #more:hover {
   background: #bdc3c7;
 }
+.devs {
+  color: #777777;
+}
 .modal-header {
   color: #777777;
 }
@@ -311,7 +314,25 @@ body .x-ng-cloak {
   overflow: hidden;
 }
 .image-container .image-card .content .image-wrapper .image-info {
-  width: 100%;
+  position: relative;
+  max-height: 100%;
+  left: 50%;
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+@media (min-width: 300px) {
+  .image-container .image-card .content .image-wrapper .image-info {
+    top: 50%;
+    left: 0;
+    max-height: none;
+    width: 100%;
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
 }
 .image-container .image-card .content .image-provider {
   width: 100%;

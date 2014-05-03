@@ -29,7 +29,17 @@
                 height: 250px;
                 overflow: hidden;
                 .image-info {
-                    width: 100%;
+                    position: relative;
+                    max-height: 100%;
+                    left: 50%;
+                    .translateX(-50%);
+                    @media(min-width: 300px) {
+                      top: 50%;
+                      left: 0;
+                      max-height: none;
+                      width: 100%;
+                      .translateY(-50%);
+                    }
                 }
             }
             .image-provider {

@@ -191,4 +191,11 @@ angular.module('foodAdvisor.controllers', [])
     $scope.ok = function () {
       $modalInstance.close();
     };
+  })
+  .controller('AboutController', function($scope) {
+    $scope.developers = ['Han Yan',
+                         'MinHui Gu',
+                         'Lei Zhang',
+                         'YunJun Wang',
+                         'HaoPeng Men'];
   });

@@ -194,3 +194,18 @@ body {
     from { opacity:1; }
     to { opacity:0; }
 }
+
+//Mixin
+.translateX (@x){
+    -moz-transform: translateX(@x);
+    -ms-transform: translateX(@x);
+    -webkit-transform: translateX(@x);
+    transform: translateX(@x);
+}
+
+.translateY (@y){
+    -moz-transform: translateY(@y);
+    -ms-transform: translateY(@y);
+    -webkit-transform: translateY(@y);
+    transform: translateY(@y);
+}

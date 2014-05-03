@@ -3,6 +3,8 @@ Module for database queries.
 """
 import re
 from nltk.corpus import stopwords
+import itertools
+import random
 
 CACHEDSTOPWORDS = stopwords.words("english")
 
@@ -101,3 +103,17 @@ def sort_image_by_name(db, image_ids, offset):
 def find_image_by_id_new(db, image_id):
     pipeline = [{'$match': {'image_id': image_id}}]
     return find_image_by_aggregation(db, pipeline)
+
+def homepage_image(db, location):
+    pipeline = [{'$match': {'$text': {'$search': location}}},
+                {'$group': {'_id': '$business_info.name'}}]
+    groups = find_image_by_aggregation(db, pipeline)
+    restaurants = [x['_id'] for x in groups]
+
+    pipeline2 = [{'$match': {'business_info.name': {'$in': restaurants}}},
+                 {'$group': {'_id': '$business_info.name', 
+                             'images': {'$push': '$image_id'}}}]
+
+    images = find_image_by_aggregation(db, pipeline2)
+    imageslist = list(itertools.chain(*[x['images'] for x in images]))
+    return random.sample(imageslist, len(imageslist))

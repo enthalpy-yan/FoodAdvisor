@@ -69,17 +69,7 @@ class UpLoad(Resource):
                                      current_app.codebook,
                                      current_app.tfidf)
             imagesrst = imagesrst[::-1]
-            print imagesrst
-            businessinfo = []
-
-            for x in xrange(12):
-                img = findhelper.find_image_by_id_new(mongo.db, imagesrst[x])
-                businessinfo.append(img)
-
-            # businessinfo = findhelper.find_image_by_id(mongo.db, imagesrst)
-
-            businessinfo = list(itertools.chain(*businessinfo))
-            print businessinfo.__class__
+            businessinfo = upload.result_in_order(mongo.db, imagesrst)
             res = {
                 'result': businessinfo,
                 'status': { 'text': None, 'file': abspath }
@@ -106,26 +96,27 @@ class UpLoad(Resource):
                 #                              imagesrst, offset)
                 
                 imagesrst = imagesrst[::-1]
-                result_list = []
-                for x in xrange(offset):
-                    img = findhelper.find_image_by_id_new(mongo.db, imagesrst[x])
-                    result_list.append(img)
-                result_list = list(itertools.chain(*result_list))
+                result_list = upload.result_in_order(mongo.db, imagesrst, offset)
 
             elif query:
-                if query == 'homepage':
+                if query == 'hoboken':
                     imagesrst = current_app.randimages
-                    result_list = findhelper.find_image_by_id(mongo.db, 
-                                                imagesrst, offset)
+                    # result_list = findhelper.find_image_by_id(mongo.db, 
+                    #                             imagesrst, offset)
+                    result_list = upload.result_in_order(mongo.db, imagesrst, offset)
                 else:
                     result_list = findhelper.find_image_by_text(mongo.db,
                                              query, offset)
         else:
-            if query == 'homepage':
-                imagesrst = [int(10000*random.random()) for i in xrange(50)]
+            if query == 'hoboken':
+                # imagesrst = [int(10000*random.random()) for i in xrange(50)]
+                # current_app.randimages = imagesrst
+                # result_list = findhelper.find_image_by_id(mongo.db, 
+                #                             imagesrst)
+                location = 'hoboken'
+                imagesrst = findhelper.homepage_image(mongo.db, location)
                 current_app.randimages = imagesrst
-                result_list = findhelper.find_image_by_id(mongo.db, 
-                                            imagesrst)
+                result_list = upload.result_in_order(mongo.db, imagesrst)
             else:
                 result_list = findhelper.find_image_by_text(mongo.db, query)
 

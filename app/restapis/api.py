@@ -99,7 +99,7 @@ class UpLoad(Resource):
                 result_list = upload.result_in_order(mongo.db, imagesrst, offset)
 
             elif query:
-                if query == 'hoboken':
+                if query == 'homepage':
                     imagesrst = current_app.randimages
                     # result_list = findhelper.find_image_by_id(mongo.db, 
                     #                             imagesrst, offset)
@@ -108,7 +108,7 @@ class UpLoad(Resource):
                     result_list = findhelper.find_image_by_text(mongo.db,
                                              query, offset)
         else:
-            if query == 'hoboken':
+            if query == 'homepage':
                 # imagesrst = [int(10000*random.random()) for i in xrange(50)]
                 # current_app.randimages = imagesrst
                 # result_list = findhelper.find_image_by_id(mongo.db, 

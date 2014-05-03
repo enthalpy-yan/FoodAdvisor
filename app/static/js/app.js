@@ -30,7 +30,7 @@ config(function ($routeProvider, $locationProvider) {
     }).
     when('/about', {
       templateUrl: 'views/about.html',
-      controller: ''
+      controller: 'AboutController'
     }).
     otherwise({
       redirectTo: '/'

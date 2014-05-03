@@ -272,8 +272,27 @@ body .x-ng-cloak {
 .load-more #more:hover {
   background: #bdc3c7;
 }
-.devs {
-  color: #777777;
+.people-container .people {
+  height: 210px;
+  background-color: #f8f8f8;
+  margin: 5px;
+  border: 1px solid #eaeaea;
+  -webkit-box-shadow: 0 1px 0 #fff inset;
+  box-shadow: 0 1px 0 #fff inset;
+  text-align: center;
+}
+.people-container .people .avatar-container {
+  padding: 20px;
+  margin: 0 auto;
+  width: 100px;
+  height: 100px;
+}
+.people-container .people .avatar-container img {
+  width: 100%;
+  border-radius: 100px;
+}
+.people-container .people p {
+  line-height: 10px;
 }
 .modal-header {
   color: #777777;

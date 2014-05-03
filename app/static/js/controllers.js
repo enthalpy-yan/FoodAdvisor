@@ -193,9 +193,19 @@ angular.module('foodAdvisor.controllers', [])
     };
   })
   .controller('AboutController', function($scope) {
-    $scope.developers = ['Han Yan',
-                         'MinHui Gu',
-                         'Lei Zhang',
-                         'YunJun Wang',
-                         'HaoPeng Men'];
+    $scope.developers = [{'name': 'Han Yan',
+                          'avatar': 'images/hy_avatar.jpg',
+                          'role': ['Architecture','Front-end', 'Back-end']},
+                         {'name': 'MinHui Gu',
+                          'avatar': 'images/mhg_avatar.jpg',
+                          'role': ['Back-end','Image Algorithms']},
+                         {'name': 'Lei Zhang',
+                          'avatar': 'images/lz_avatar.jpg',
+                          'role': ['Back-end', 'DBM']},
+                         {'name': 'YunJun Wang',
+                          'avatar': 'images/yjw_avatar.jpg',
+                          'role': ['Front-end', 'Docs']},
+                         {'name': 'HaoPeng Men',
+                          'avatar': 'images/hpm_avatar.jpg',
+                          'role': ['Back-end', 'API']}];
   });

@@ -1,5 +1,11 @@
-<div class="container devs">
-    <div class="col-md-2" ng-repeat="dev in developers">
-        {{dev}}
+<div class="container">
+    <div class="people-container">
+        <div class="people col-md-2" ng-repeat="dev in developers">
+            <div class="avatar-container">
+                <img ng-src="{{dev.avatar}}">
+            </div>
+            <h6>{{dev.name}}</h6>
+            <p ng-repeat="r in dev.role">{{r}}</p>
+        </div>
     </div>
 </div>

@@ -244,6 +244,11 @@ body .x-ng-cloak {
   font-family: 'Roboto';
   font-weight: 200;
 }
+@media (max-width: 768px) {
+  .my-form-control {
+    font-size: 15px;
+  }
+}
 .search-button {
   height: 50px;
   width: 50px;

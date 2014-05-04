@@ -14,6 +14,15 @@ def dect_SIFT(image):
     _, des = cv2.SIFT().detectAndCompute(gray, None)
     return des
     
+def dect_dense_SIFT(image):
+    print "getting dense SIFT for: ", image
+    img = cv2.imread(image, cv2.IMREAD_COLOR)
+    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    dense = cv2.FeatureDetector_create("Dense")
+    kp = dense.detect(gray)
+    _,des=cv2.SIFT().compute(img,kp)
+    return des[50:2450:3]
+       
 def new_file(filename):
     f = open(filename,"w")
     f.write("")
@@ -23,7 +32,7 @@ def grab_and_save_SIFT(img_list,SIFT_txt):
     new_file(SIFT_txt)
     f = file(SIFT_txt,"a")
     for a_img in img_list:
-        record_sift(dect_SIFT(a_img),f)
+        record_sift(dect_dense_SIFT(a_img),f)
     f.close()
     
     
@@ -44,7 +53,8 @@ def clustering(txt,codebook_txt,K):
         
 def get_bow(imagepath,codebook):
     print "vq for: ",imagepath
-    vecs, _ = cluster.vq.vq(dect_SIFT(imagepath), codebook)
+    #vecs, _ = cluster.vq.vq(dect_SIFT(imagepath), codebook)
+    vecs, _ = cluster.vq.vq(dect_dense_SIFT(imagepath), codebook)
     counts, bins = histogram(vecs, len(codebook))
     return counts 
     

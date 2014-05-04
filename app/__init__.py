@@ -21,8 +21,8 @@ mongo = PyMongo(app, config_prefix='MONGO')
 ctx = app.app_context()
 ctx.push()
 current_app.mycreate = "ajlknl123j1l2k3jn123jnansfkajwe"
-codebook = np.loadtxt('app/outputs/codebook.txt')
-tfidf = np.loadtxt('app/outputs/tfidf.txt')
+codebook = np.loadtxt('app/outputs/dense_codebook.txt')
+tfidf = np.loadtxt('app/outputs/dense.txt')
 current_app.codebook = codebook
 current_app.tfidf = tfidf
 

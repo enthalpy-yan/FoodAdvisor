@@ -21,7 +21,7 @@ def dect_dense_SIFT(image):
     dense = cv2.FeatureDetector_create("Dense")
     kp = dense.detect(gray)
     _,des=cv2.SIFT().compute(img,kp)
-    return des[100:2450:3]
+    return des[100:2350:3]
        
 def new_file(filename):
     f = open(filename,"w")

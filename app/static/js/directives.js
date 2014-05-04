@@ -53,6 +53,18 @@ angular.module('foodAdvisor.directives', [])
       });
     };
   }])
+  .directive('stickyTableOfContents', ['$window', function ($window) {
+    return function(scope, element, attrs) {
+      var windowEl = angular.element($window);
+      windowEl.bind('scroll', function() {
+        if (this.pageYOffset > 100) {
+          element.addClass('fixed-table-of-contents');
+        } else {
+          element.removeClass('fixed-table-of-contents');
+        }
+      });
+    };
+  }])
   .directive('holder', ['$window', function ($window) {
     return function(scope, element, attrs) {
       var windowEl = angular.element($window);
@@ -94,7 +106,30 @@ angular.module('foodAdvisor.directives', [])
         });
       }
     };
-  }]);
+  }])
+  .directive('tableOfContents', function(){
+    return {
+        restrict:'A',
+        link : function(scope, elm, attrs) {
+            function updateHeadlines() {
+                scope.headlines=[];
+                angular.forEach(elm[0].querySelectorAll('h1,h2,h3,h4,h5,h6'), function(e){
+                    scope.headlines.push({
+                        level: e.tagName[1],
+                        label: angular.element(e).text(),
+                        element: e
+                    });
+                });
+            }
+
+            updateHeadlines();
+
+            scope.scrollTo=function(headline){
+                headline.element.scrollIntoView();
+            }
+        }
+    }
+  });
 
 // directive template
 function btnTemplate() {

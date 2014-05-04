@@ -19,13 +19,19 @@ def search_image(filepath, codebook, tfidf, control="with_tfidf"):
     k,_ = codebook.shape
     bow = get_bow(filepath,codebook)
     _,l = tfidf.shape
-    idi = np.zeros((1,l))
-
-    for i in range(k):
-        if bow[i] != 0 :
-            idi = np.add(idi,tfidf[i])
-    rank = [(i,j) for (i,j) in zip([i for i in range(l)],idi.tolist()[0])]
-
+   
+    control = "no_tfidf"
+    if control == "with_tfidf":
+        idi = np.zeros((1,l))
+        for i in range(k):
+            if bow[i] != 0 :
+                idi = np.add(idi,tfidf[i])
+        rank = [(i,j) for (i,j) in zip([i for i in range(l)],idi.tolist()[0])]
+    else:
+        bow = [ float(i)/sum(bow) for i in bow.tolist()]        
+        rank =  np.dot(np.asarray(bow),tfidf)
+        rank =  [(i,j) for (i,j) in zip([i for i in range(l)],rank.tolist())]
+       
     q = PriorityQueue(50)
     for (x,y) in rank:
         if not q.full():
@@ -38,5 +44,16 @@ def search_image(filepath, codebook, tfidf, control="with_tfidf"):
     result = []
     while not q.empty():
         result.append(q.get())
-    # decreasing according to similarity
-    return [i.id() for i in result][::-1]
+   
+    # images_data_path = "/Users/minhuigu/FoodAdvisor/app/outputs/images_data.txt"
+    # images_folder = "/Users/minhuigu/Desktop/"
+    # img_list = []
+    # json_content = open(images_data_path).read()
+    # for each in json.loads(json_content):
+    #     img_list.append(images_folder + each['relpath'])
+    # 
+    # for a in [i.id() for i in result][::]:
+    #     print img_list[a]
+           
+    # decreasing according to similarity    
+    return [i.id() for i in result][::]

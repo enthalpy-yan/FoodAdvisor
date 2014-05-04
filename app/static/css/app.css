@@ -384,7 +384,7 @@ body .x-ng-cloak {
 }
 .image-container .image-card .content .image-title p {
   padding-top: 10px;
-  color: #8ea1ac;
+  color: #333;
   font-style: italic;
   font-size: 18px;
   margin: auto 0;
@@ -392,7 +392,7 @@ body .x-ng-cloak {
 }
 .image-container .image-card .content .image-title p a {
   text-decoration: none;
-  color: #8ea1ac;
+  color: #333;
 }
 .image-container .image-card .content .image-wrapper {
   width: 100%;

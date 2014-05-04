@@ -14,6 +14,7 @@ angular.module('foodAdvisor.controllers', [])
     $scope.queryString = null;
     $scope.offset = 24;
     $scope.resultsByPressEnterInInputBar = null;
+    $scope.sortMethod = null;
 
     //Geo location initialization
     $scope.getCurrentLocation = function() {
@@ -58,25 +59,33 @@ angular.module('foodAdvisor.controllers', [])
     });
 
     $scope.clickSort = function(sortMethod) {
+      sortResult(sortMethod);
+    };
+
+    var sortResult = function(sortMethod) {
       switch(sortMethod) {
         case 0:
+          $scope.sortMethod = 0;
           $scope.imageData =
             _.sortBy($scope.imageData,
                      function(data) {return data['description']});
           break;
         case 1:
+          $scope.sortMethod = 1;
           var sorted =
             _.sortBy($scope.imageData,
                      function(data) {return data['description']});
           $scope.imageData = sorted.reverse();
           break;
         case 2:
+          $scope.sortMethod = 2;
           var sorted =
             _.sortBy($scope.imageData,
                      function(data) {return data['business_info']['rating']});
           $scope.imageData = sorted.reverse();
           break;
         case 3:
+          $scope.sortMethod = 3;
           $scope.imageData =
             _.sortBy($scope.imageData,
                      function(data) {return data['dist']});
@@ -99,6 +108,9 @@ angular.module('foodAdvisor.controllers', [])
           .then(function(data) {
             $scope.originalData = data;
             $scope.imageData = $scope.originalData['result'];
+            if ($scope.sortMethod != null) {
+              sortResult($scope.sortMethod);
+            };
             $scope.offset += 12
           }, function(error) {
 
@@ -109,6 +121,9 @@ angular.module('foodAdvisor.controllers', [])
           .then(function(data) {
             $scope.originalData = data;
             $scope.imageData = $scope.originalData['result'];
+            if ($scope.sortMethod != null) {
+              sortResult($scope.sortMethod);
+            };
             $scope.offset += 12
           }, function(error) {
 
@@ -153,11 +168,9 @@ angular.module('foodAdvisor.controllers', [])
       if (d > 5000) {
         return null;
       }
-      $scope.imageData[index]['dist'] = _.parseInt(d);
+      $scope.imageData[index]['dist'] = parseFloat(d);
       return d.toFixed(2);
     };
-
-      $scope.items = ['item1', 'item2', 'item3'];
 
     $scope.open = function (index) {
       var modalInstance = $modal.open({

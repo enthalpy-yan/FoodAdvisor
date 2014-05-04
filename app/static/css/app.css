@@ -180,6 +180,10 @@ body .x-ng-cloak {
     opacity: 0;
   }
 }
+.card-shadow {
+  -webkit-box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.05);
+}
 .fixed-search-bar {
   position: fixed;
   top: 0;
@@ -272,27 +276,84 @@ body .x-ng-cloak {
 .load-more #more:hover {
   background: #bdc3c7;
 }
-.people-container .people {
+.about-intro {
+  width: 100%;
+  height: 100px;
+  background-color: #f8f8f8;
+  text-align: center;
+  padding: 8px;
+  border-bottom: 1px solid #a1a1a1;
+  margin-top: 20px;
+}
+.about-intro h3 {
+  color: #777777;
+}
+.about-content {
+  width: 100%;
+}
+.about-content .people-container {
+  margin-top: 40px;
+  -webkit-box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.05);
+}
+.about-content .people-container .team-container {
+  width: 94%;
+  background-color: #f8f8f8;
+}
+@media (max-width: 992px) {
+  .about-content .people-container .team-container {
+    width: 100%;
+  }
+}
+.about-content .people-container .team-container .team-title {
+  padding: 7px;
+  color: white;
+  background-color: #3498db;
+  font-weight: 500;
+  font-size: 25px;
+}
+.about-content .people-container .team-container .people {
   height: 210px;
   background-color: #f8f8f8;
   margin: 5px;
-  border: 1px solid #eaeaea;
-  -webkit-box-shadow: 0 1px 0 #fff inset;
-  box-shadow: 0 1px 0 #fff inset;
-  text-align: center;
+  border-bottom: 1px solid #8e959c;
 }
-.people-container .people .avatar-container {
+.about-content .people-container .team-container .people .avatar-container {
   padding: 20px;
-  margin: 0 auto;
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
 }
-.people-container .people .avatar-container img {
+.about-content .people-container .team-container .people .avatar-container img {
   width: 100%;
-  border-radius: 100px;
+  border-radius: 150px;
 }
-.people-container .people p {
+.about-content .people-container .team-container .people .personal-info {
+  padding: 10px;
+}
+.about-content .people-container .team-container .people .personal-info h5 {
+  color: #adb3b9;
+}
+.about-content .people-container .team-container .people .personal-info p {
+  font-size: 14px;
+  color: #8e959c;
+  line-height: 1.55em;
+}
+.about-content .people-container .team-container .people p {
   line-height: 10px;
+}
+.about-content .story-container {
+  -webkit-box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.05);
+  margin-top: 40px;
+  background-color: #f8f8f8;
+  height: 500px;
+}
+.about-content .story-container .story-title {
+  padding: 7px;
+  color: white;
+  background-color: #e74c3c;
+  font-weight: 500;
+  font-size: 25px;
 }
 .modal-header {
   color: #777777;

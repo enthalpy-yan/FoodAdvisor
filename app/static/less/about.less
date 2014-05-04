@@ -1,24 +1,103 @@
-.people-container {
-    .people {
-        height: 210px;
-        background-color: @component-bg;
-        margin: 5px;
-        border: 1px solid #eaeaea;
-        -webkit-box-shadow: 0 1px 0 #fff inset;
-        box-shadow: 0 1px 0 #fff inset;
-        .avatar-container {
-            padding: 20px;
-            margin: 0 auto;
-            width: 100px;
-            height: 100px;
-            img {
+.about-intro {
+    width: 100%;
+    height: 100px;
+    background-color: @component-bg;
+    text-align: center;
+    h3 {
+        color: @myfont-color;
+    }
+    padding: 8px;
+    border-bottom: 1px solid #a1a1a1;
+    margin-top: 20px;
+}
+
+.about-content {
+    width:100%;
+    .people-container {
+        margin-top: 40px;
+        .card-shadow;
+        .team-container {
+            width: 94%;
+            @media(max-width: 992px) {
                 width: 100%;
-                border-radius: 100px;
+            }
+            background-color: @component-bg;
+            .team-title {
+                padding: 7px;
+                color: white;
+                background-color: #3498db;
+                font-weight: 500;
+                font-size: 25px;
+            }
+            .people {
+                height: 210px;
+                background-color: @component-bg;
+                margin: 5px;
+                border-bottom: 1px solid #8e959c;
+                .avatar-container {
+                    padding: 20px;
+                    width: 150px;
+                    height: 150px;
+                    img {
+                        width: 100%;
+                        border-radius: 150px;
+                    }
+                }
+                .personal-info {
+                    padding: 10px;
+                    h4 {
+                    }
+                    h5 {
+                        color: #adb3b9;
+                    }
+                    p {
+                        font-size: 14px;
+                        color: #8e959c;
+                        line-height: 1.55em;
+                    }
+                }
+                p {
+                    line-height: 10px;
+                }
             }
         }
-        text-align: center;
-        p {
-            line-height: 10px;
+    }
+    .story-container {
+        .card-shadow;
+        margin-top: 40px;
+        background-color: @component-bg;
+        height: 500px;
+        .story-title {
+            padding: 7px;
+            color: white;
+            background-color: #e74c3c;
+            font-weight: 500;
+            font-size: 25px;
         }
     }
 }
+
+// .people-container {
+//     .people {
+//         height: 210px;
+//         background-color: @component-bg;
+//         margin: 5px;
+//         border: 1px solid #eaeaea;
+//         -webkit-box-shadow: 0 1px 0 #fff inset;
+//         box-shadow: 0 1px 0 #fff inset;
+//         .avatar-container {
+//             padding: 20px;
+//             margin: 0 auto;
+//             width: 100px;
+//             height: 100px;
+//             img {
+//                 width: 100%;
+//                 border-radius: 100px;
+//             }
+//         }
+//         text-align: center;
+//         p {
+//             line-height: 10px;
+//         }
+//     }
+// }

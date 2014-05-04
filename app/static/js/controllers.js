@@ -195,17 +195,22 @@ angular.module('foodAdvisor.controllers', [])
   .controller('AboutController', function($scope) {
     $scope.developers = [{'name': 'Han Yan',
                           'avatar': 'images/hy_avatar.jpg',
-                          'role': ['Architecture','Front-end', 'Back-end']},
+                          'roles': 'Architecture/Front-end/Back-end',
+                          'dspt': 'As the architect of FoodAdvisor, Han leads our awesome team and is responsible for almost everything about our application.'},
                          {'name': 'MinHui Gu',
                           'avatar': 'images/mhg_avatar.jpg',
-                          'role': ['Back-end','Image Algorithms']},
+                          'roles': 'Back-end/Image Algorithms',
+                          'dspt': 'Combining her image processing algorithm knowledges with development skill, MinHui designed and implemented bunch of algorithms related to image retrieval. She is the brains behind the technology of the food image search engine.'},
                          {'name': 'Lei Zhang',
                           'avatar': 'images/lz_avatar.jpg',
-                          'role': ['Back-end', 'DBM']},
+                          'roles': 'Back-end/DBM',
+                          'dspt': 'Lei, a certified MongoDB developer who brings range of database management experiences to our team. He is also responsible for the design and implementation of our APIs.'},
                          {'name': 'YunJun Wang',
                           'avatar': 'images/yjw_avatar.jpg',
-                          'role': ['Front-end', 'Docs']},
+                          'roles': 'Front-end/Docs',
+                          'dspt': 'As a beginner of Front-end development, YunJun always has strong passion to learn.'},
                          {'name': 'HaoPeng Men',
                           'avatar': 'images/hpm_avatar.jpg',
-                          'role': ['Back-end', 'API']}];
+                          'roles': 'Back-end/API',
+                          'dspt': 'HaoPeng is an experienced JAVA developer who helps us build the Back-end APIs using Python.'}];
   });

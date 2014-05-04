@@ -1,7 +1,7 @@
 body {
   font-family: "Roboto", sans-serif;
   font-weight: 300;
-  background-color: #e5e5e5;
+  background-color: #ebeeed;
   -webkit-font-smoothing: subpixel-antialiased;
 }
 body [ng\:cloak],
@@ -21,6 +21,7 @@ body .x-ng-cloak {
 }
 /****Custom bootstrap component styles****/
 .my-navbar {
+  background-color: #ffffff;
   padding: 15px 0 8px 0px;
   -webkit-box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.05);
   box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.05);
@@ -32,7 +33,7 @@ body .x-ng-cloak {
   font-size: 18px;
 }
 .my-navbar .link-top-border {
-  border-top: 3px solid #f8f8f8;
+  border-top: 3px solid #ffffff;
 }
 .my-navbar .link-top-border:hover,
 .my-navbar :focus {
@@ -130,7 +131,7 @@ body .x-ng-cloak {
 }
 .modal-content {
   border-radius: 0px;
-  background-color: #f8f8f8;
+  background-color: #ffffff;
 }
 .btn {
   border-radius: 0px;
@@ -205,14 +206,14 @@ body .x-ng-cloak {
   padding-bottom: 8px;
   height: 80px;
   width: 100%;
-  background-color: #e5e5e5;
+  background-color: #ebeeed;
 }
 .search-bar-container .sorting-menu {
   height: 50px;
   width: 50px;
   font-size: 30px;
   color: #777777;
-  background-color: #f8f8f8;
+  background-color: #ffffff;
   -webkit-box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.05);
   box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.05);
 }
@@ -222,20 +223,20 @@ body .x-ng-cloak {
   cursor: pointer;
 }
 .search-bar-container .search-bar {
-  background-color: #f8f8f8;
+  background-color: #ffffff;
   height: 50px;
   -webkit-box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.05);
   box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.05);
 }
 .search-bar-container .search-bar .my-input-bar {
   height: 50px;
-  background-color: #f8f8f8;
+  background-color: #ffffff;
 }
 .my-form-control {
   outline: 0;
   border: none;
   width: 100%;
-  background-color: #f8f8f8;
+  background-color: #ffffff;
   padding: 6px;
   border-radius: 2px;
   margin-bottom: 5px;
@@ -281,15 +282,10 @@ body .x-ng-cloak {
 .load-more #more:hover {
   background: #bdc3c7;
 }
-.table-of-contents {
-  font-size: 20px;
-  line-height: 25px;
-  font-weight: 300;
-}
 .about-intro {
   width: 100%;
   height: 100px;
-  background-color: #f8f8f8;
+  background-color: #ffffff;
   text-align: center;
   padding: 8px;
   border-bottom: 1px solid #a1a1a1;
@@ -308,7 +304,7 @@ body .x-ng-cloak {
   width: 94%;
   -webkit-box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.05);
   box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.05);
-  background-color: #f8f8f8;
+  background-color: #ffffff;
 }
 @media (max-width: 992px) {
   .about-content .people-container .team-container {
@@ -324,7 +320,7 @@ body .x-ng-cloak {
 }
 .about-content .people-container .team-container .people {
   height: 210px;
-  background-color: #f8f8f8;
+  background-color: #ffffff;
   margin: 5px;
   border-bottom: 1px solid #8e959c;
 }
@@ -355,7 +351,7 @@ body .x-ng-cloak {
   -webkit-box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.05);
   box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.05);
   margin-top: 40px;
-  background-color: #f8f8f8;
+  background-color: #ffffff;
   height: 500px;
 }
 .about-content .story-container .story-title {
@@ -378,7 +374,7 @@ body .x-ng-cloak {
 .image-container .image-card .content {
   width: 100%;
   height: 100%;
-  background-color: #f8f8f8;
+  background-color: #ffffff;
   -webkit-box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.05);
   box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.05);
 }

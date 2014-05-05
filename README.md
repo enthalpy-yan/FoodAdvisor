@@ -22,7 +22,7 @@ Data source: [Yelp](http://www.yelp.com)(food images), [Yelp API](http://api.yel
 
 ###Front-end
 
-App: [AngularJS](http://angularjs.org/), [Lo-Dash](http://lodash.com/), [Grunt](http://gruntjs.com/)
+App: [AngularJS](http://angularjs.org/), [Lo-Dash](http://lodash.com/), [Yeoman](http://yeoman.io/), , [Bower](http://bower.io/), [Grunt](http://gruntjs.com/)
 
 Style: [Bootstrap](http://getbootstrap.com/), [LESS](http://lesscss.org/), [FontAwesome](http://fortawesome.github.io/Font-Awesome/)
 

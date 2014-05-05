@@ -18,8 +18,13 @@ class Image(object):
 def search_image(filepath, codebook, tfidf, control="with_tfidf"):
     k,_ = codebook.shape
     bow = get_bow(filepath,codebook)
+    print "tfidf matrix shape:"
+    print tfidf.shape
+    
+    print "Bag of Word: "
+    print bow
+     
     _,l = tfidf.shape
-   
     control = "no_tfidf"
     if control == "with_tfidf":
         idi = np.zeros((1,l))
@@ -44,6 +49,7 @@ def search_image(filepath, codebook, tfidf, control="with_tfidf"):
     result = []
     while not q.empty():
         result.append(q.get())
+        
    
     # images_data_path = "/Users/minhuigu/FoodAdvisor/app/outputs/images_data.txt"
     # images_folder = "/Users/minhuigu/Desktop/"
@@ -54,6 +60,7 @@ def search_image(filepath, codebook, tfidf, control="with_tfidf"):
     # 
     # for a in [i.id() for i in result][::]:
     #     print img_list[a]
-           
+    print "Best rank images: "
+    print [i.id() for i in result][::]     
     # decreasing according to similarity    
     return [i.id() for i in result][::]

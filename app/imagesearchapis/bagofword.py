@@ -52,7 +52,7 @@ def clustering(txt,codebook_txt,K):
     return nd
         
 def get_bow(imagepath,codebook):
-    print "dense vq for: ",imagepath
+    #print "dense vq for: ",imagepath
     #vecs, _ = cluster.vq.vq(dect_SIFT(imagepath), codebook)
     vecs, _ = cluster.vq.vq(dect_dense_SIFT(imagepath), codebook)
     counts, bins = histogram(vecs, len(codebook))

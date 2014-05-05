@@ -16,14 +16,19 @@ class Image(object):
         return int(self.index)
 
 def search_image(filepath, codebook, tfidf, control="with_tfidf"):
+    print_detail = True
     k,_ = codebook.shape
+    if print_detail:
+        print "-------------------------------------------------------------------------------"
     bow = get_bow(filepath,codebook)
-    print "tfidf matrix shape:"
-    print tfidf.shape
-    
-    print "Bag of Word: "
-    print bow
-     
+    if print_detail:
+        print "-------------------------------------------------------------------------------"
+        print "tfidf matrix shape:"
+        print tfidf.shape
+        print "-------------------------------------------------------------------------------"
+        print "Bag of Word of: ",filepath
+        print bow
+        print "-------------------------------------------------------------------------------"
     _,l = tfidf.shape
     control = "no_tfidf"
     if control == "with_tfidf":
@@ -60,7 +65,9 @@ def search_image(filepath, codebook, tfidf, control="with_tfidf"):
     # 
     # for a in [i.id() for i in result][::]:
     #     print img_list[a]
-    print "Best rank images: "
-    print [i.id() for i in result][::]     
+    if print_detail:
+        print "Best rank images: "
+        print [i.id() for i in result][::]   
+        print "-------------------------------------------------------------------------------"  
     # decreasing according to similarity    
     return [i.id() for i in result][::]

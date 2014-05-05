@@ -8,4 +8,5 @@ flask
 node_modules
 app/static/images/foods
 app/outputs/tfidf.txt
+app/outputs/dense.txt
 app/outputs/imgqueries

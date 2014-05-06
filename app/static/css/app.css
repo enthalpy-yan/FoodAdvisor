@@ -48,6 +48,7 @@ body .x-ng-cloak {
   -moz-transition: .5s;
   -webkit-transition: .5s;
   transition: .5s;
+  outline: 0;
 }
 .tooltip {
   position: absolute;
